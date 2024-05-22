@@ -9,8 +9,8 @@
     <a href="index.php">Начало</a>
     <a href="todo-list.php">Списък</a>
     <a href="calendar.php">Календар</a>
-    <a href="#">Потребители</a>
-    <a href="#">Категории</a>
+    <a href="users.php">Потребители</a>
+    <a href="categories.php">Категории</a>
 </div>
 </head>
 <body>

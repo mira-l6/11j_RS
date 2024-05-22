@@ -10,6 +10,7 @@ body, html {
     margin: 50px auto;
     width: 90%;
     max-width: 600px;
+    color: turquoise;
 }
 .calendar-header {
     display: flex;
@@ -33,7 +34,7 @@ body, html {
     border-collapse: collapse;
 }
 .calendar-table th, .calendar-table td {
-    border: 1px solid #ccc;
+    border: 1px solid #45c7ff;
     padding: 10px;
     text-align: center;
 }
