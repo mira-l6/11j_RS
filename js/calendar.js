@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', function()
 
         monthYear.textContent = date.toLocaleDateString('bg-BG', { month: 'long', year: 'numeric' });
 
-        const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+        // Get the day of the week of the first day of the month
+        let firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+        // Adjust for Monday as the first day of the week
+        firstDayOfMonth = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1;
+
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
         let dateCell = 1;
