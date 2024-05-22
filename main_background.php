@@ -9,7 +9,7 @@
 
 <head>
     <div class="main-background-image">
-        <img src="/11J_RS/img/main_background.jpg" alt="">
+        <img src="/11J_RS/img/pinkdesk.png" alt="">
     </div>
 </head>
 
