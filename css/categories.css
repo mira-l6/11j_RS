@@ -1,9 +1,9 @@
-.navbar a:nth-child(2){
+.navbar a:nth-child(5){
     background-color: white;
     color: black;
     opacity: 0.6;
     padding: 0.5em;
 }
-.navbar a:nth-child(2):hover{
+.navbar a:nth-child(5):hover{
     border:  none;
 }
