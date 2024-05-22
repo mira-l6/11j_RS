@@ -16,7 +16,6 @@ a, a:visited, a:active{
     justify-content: flex-start !important;
     font-size: 1.1em;
     padding: 1em;
-    /* border: 1px solid white; */
     height: 10vh;
 }
 .navbar a, .navbar a:visited, a:active{
