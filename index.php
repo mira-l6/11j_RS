@@ -15,7 +15,7 @@
 
 <body>
     <div class="main-content">
-        <h1 style="color:#FF0000">Списък със задачи</h1>
+        <h1>Списък със задачи</h1>
         <img src="11j_RS/img/prettydesk2.jpg/" alt="Girl in a jacket" width="500" height="600">
 
         <div class="button-container">
