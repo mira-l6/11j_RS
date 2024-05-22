@@ -1,5 +1,6 @@
 <?php
-include "menu.php";
+    include "menu.php";
+    include "main_background.php";
 ?>
 <!DOCTYPE html>
 <html lang="bg">
@@ -8,13 +9,10 @@ include "menu.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Списък със задачи</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/calendar.css">
 </head>
 
 <body>
-    <div class="main-background-image">
-        <img src="/11J_RS/img/main_background.jpg" alt="">
-    </div>
     <div class="calendar-container">
         <div class="calendar-header">
             <button id="prev-month">&lt;</button>
