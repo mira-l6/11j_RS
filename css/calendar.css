@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: #f8d9f8;
     text-align: center;
     color: #333;
 }
@@ -10,7 +10,7 @@ body, html {
     margin: 50px auto;
     width: 90%;
     max-width: 600px;
-    color: turquoise;
+    color: rgb(37, 0, 30);
 }
 .calendar-header {
     display: flex;
@@ -34,7 +34,7 @@ body, html {
     border-collapse: collapse;
 }
 .calendar-table th, .calendar-table td {
-    border: 1px solid #45c7ff;
+    border: 1px solid rgb(37, 0, 30);
     padding: 10px;
     text-align: center;
 }
