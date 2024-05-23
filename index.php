@@ -1,5 +1,6 @@
 <?php
     include "menu.php";
+    include "main_background.php";
 ?>
 <!DOCTYPE html>
 <html lang="bg">
@@ -10,17 +11,14 @@
 
     <title>Списък със задачи</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
 </head>
 
 <body>
-    <div class="main-content">
+    <div class="main-title d-flex flex-column justify-content-center align-items-center">
         <h1>Списък със задачи</h1>
-
-        <div class="button-container">
-            <a href="todo-list.php" class="main-button">Списък със задачи</a>
-        </div>
+        <button onclick="window.location = 'todo-list.php'" class="main-todo-button">Списък</button>
     </div>
 </body>
-</html>
 
+</html>
