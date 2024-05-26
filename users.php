@@ -14,7 +14,8 @@
 </head>
 
 <body>
-
+        <img id="img1" src="img/pinkdesk.png" alt="Avatar" class="avatar">
+    
 </body>
 
 </html>
