@@ -2,6 +2,8 @@
     margin: 50px auto;
     width: 90%;
     max-width: 600px;
+    max-height: 600px;
+    overflow-y: scroll;
     color: rgb(37, 0, 30);
 }
 .calendar-header {
