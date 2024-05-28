@@ -7,14 +7,25 @@
 .navbar a:nth-child(4):hover{
     border:  none;
 }
-
+body
+{
+  overflow-y: scroll;
+  height: 1000px;
+}
 .avatar-container {
+    height: 100%;
+  }
+
+  .user-container
+  {
     vertical-align: middle;
     width: 1000px;
-    max-height: 1000px;
-    overflow: scroll;
-    border:0cap;
-    background-color: blue;
+    height: 230px;
+    border:10px dotted pink;
+    fill:aqua;
+    background-color: rgb(173, 240, 255);
+    border-radius: 10px;
+    margin-top: 30px;
   }
 
 .avatar {
@@ -24,3 +35,10 @@
     height: 220px;
     clip-path: circle(30%);
   }
+
+  .user-features-container
+  {
+    vertical-align: middle;
+    text-align: center;
+  }
+  
