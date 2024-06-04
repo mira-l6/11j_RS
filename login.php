@@ -1,6 +1,6 @@
 <?php
-include "menu.php";
-include "main_background.php";
+    include "menu.php";
+    include "main_background.php";
 
 ?>
 
@@ -13,7 +13,7 @@ include "main_background.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
-    <title>Document</title>
+    <title>Списък със задачи</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@ include "main_background.php";
 
                 <div class="login-additional">
                     <span><a href="">Забравена парола?</a></span>
-                    <span ><a href="">Нямате профил? Регистрация</a></span>
+                    <span ><a href="register.php">Нямате профил? Регистрация</a></span>
                 </div>
                 
                 <input type="submit" value="Вход">
