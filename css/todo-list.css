@@ -10,6 +10,7 @@
 
 main{
     width: 100vw;
+    background-color: red;
     height: calc(100vh - 73.75px);
     display: flex;
     justify-content: center;
