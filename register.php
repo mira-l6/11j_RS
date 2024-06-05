@@ -12,6 +12,7 @@ include "menu.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/main_background_scroll.css">
     <title>Списък със задачи</title>
 </head>
 
@@ -40,12 +41,12 @@ include "menu.php";
                     </div>
                 </div>
 
-                <div>
+                <div class="birthdate-area">
                     <label for="" class="form-control">Дата на раждане</label>
                     <input type="date" class="form-control">
                 </div>
 
-                <div>
+                <div class="color-area">
                     <select name="" id="" class="form-select">
                         <option value="">Цвят</option>
                         <option value="red">Червено</option>
@@ -60,7 +61,7 @@ include "menu.php";
                     </select>
                 </div>
 
-                <div>
+                <div class="upload-img-area">
                     <label for="" class="form-control">Прикачване на снимка</label>
                     <input type="file" class="form-control">
                 </div>
@@ -77,7 +78,7 @@ include "menu.php";
 
 
                 <div class="form-floating mt-3 mb-3">
-                    <input type="text" class="form-control" id="pass" placeholder="Въведете парола" name="password">
+                    <input type="password" class="form-control" id="pass" placeholder="Въведете парола" name="password">
                     <label for="pass">Парола</label>
                 </div>
                 <div class="form-floating mt-3 mb-3">

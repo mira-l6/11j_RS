@@ -49,3 +49,7 @@ input[type="submit"]{
     margin-top: 2em;
     padding: 0.5em;
 }
+
+a:visited{
+    color: rgb(47, 45, 45) !important;
+}

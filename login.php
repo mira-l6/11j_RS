@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="login-additional">
-                    <span><a href="">Забравена парола?</a></span>
+                    <span><a href="forgot-pass.php">Забравена парола?</a></span>
                     <span ><a href="register.php">Нямате профил? Регистрация</a></span>
                 </div>
                 

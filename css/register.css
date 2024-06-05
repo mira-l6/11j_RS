@@ -2,7 +2,7 @@
     padding-left: 1em;
 }
 
-body {
+/* body {
     overflow-y: scroll !important;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6),
             rgba(0, 0, 0, 0.6)), url("../img/pinkdesk.png");
@@ -10,7 +10,7 @@ body {
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 main {
     width: 100vw;
@@ -20,17 +20,18 @@ main {
 }
 
 .register-box {
-    margin-top: 2em;
+    margin-top: 4em;
+    margin-bottom: 4em;
     padding: 2em;
     background-color: #e6e6e6;
-    width: 30em;
+    width: 40em;
 }
 
 input[type="submit"]{
     background-color: pink;
     font-size: 1.2em;
     width: 100%;
-    margin-top: 2em;
+    margin-top: 1.5em;
     padding: 0.5em;
 }
 
@@ -40,4 +41,33 @@ input[type="submit"]{
 
 .register-checkboxes{
     padding: 1em;
+    gap: 2em;
+}
+
+.birthdate-area label, .upload-img-area label{
+    margin-bottom: 0; 
+    border-bottom: 1px solid #e6e6e6; 
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.birthdate-area input{
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    border-top: 0 !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.color-area, .birthdate-area{
+    margin-bottom: 1em;
+}
+.color-area select{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.upload-img-area input{
+    border-top: 0 !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
