@@ -10,15 +10,16 @@
 
 main{
     width: 100vw;
-    background-color: red;
     height: calc(100vh - 73.75px);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .todo-list-box{
-    padding: 3em;
+    opacity: 0.8;
+    margin-top: 3em;
+    padding: 1em;
     background-color: #e6e6e6;
-    width: 30em;
+    width: 80%;
 }

@@ -18,7 +18,24 @@
     <main>
         <div class="todo-list-box">
             
-
+        <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Задача</th>
+        <th>Категория</th>
+        <th>Статус</th>
+        <th>Начало</th>
+        <th>Краен срок</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr> -->
+    </tbody>
+  </table>
         </div>
     </main>
 </body>
