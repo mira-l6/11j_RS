@@ -2,8 +2,8 @@ body {
     overflow-y: scroll !important;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6),
             rgba(0, 0, 0, 0.6)), url("../img/pinkdesk.png");
-    width: 100%;
-    overflow: hidden;
+    width: 100vw;
+    overflow-x: hidden;
     background-repeat: no-repeat;
     background-size: cover;
 }

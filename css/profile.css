@@ -1,9 +1,15 @@
+body{
+    overflow-x: hidden !important;
+    /* background-color: red; */
+}
+
 main{
     width: 100vw;
     height: calc(100vh - 73.75px);
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    margin-bottom: 4em;
 }
 
 .navbar{
@@ -65,6 +71,7 @@ main{
     height: calc(100% - 89.6px);
     background-color: #dddada;
     padding-top: 4em;
+    padding-bottom: 2em;
 }
 .profile-tasks-content .tasks{
     width: 33%;
@@ -105,6 +112,11 @@ main{
     justify-content: flex-start;
     gap: 0.4em;
 }
+/* .task-title div{
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.4em;
+} */
 .task-color-category{
     display: flex;
     padding-left: 0.5em;
@@ -152,7 +164,31 @@ p{
 .add-task-button-check{
     display: none;
 }
+.add-task-button-check i{
+    font-size: 1em;
+}
 .tasks:first-child .task:hover .add-task-button-check{
-    display: block !important;
+    display: flex !important;
+    width: 1.5em;
+    height: 1.5em;
+    color: white;
     justify-self: end;
+    background: transparent;
+    border: none;
+    background-color: rgb(81, 231, 81);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
+}
+
+.main-img{
+    background-image: url("/img/pinkdesk.png");
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    filter: brightness(40%);
+    z-index: -1;
 }

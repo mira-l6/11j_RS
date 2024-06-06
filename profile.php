@@ -1,6 +1,6 @@
 <?php
-    include "menu.php";
-    // include "main_background.php";
+include "menu.php";
+// include "main_background.php";
 ?>
 <!DOCTYPE html>
 <html lang="bg">
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Списък със задачи</title>
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/main_background_scroll.css">
+    <!-- <link rel="stylesheet" href="css/main_background_scroll.css"> -->
 </head>
 
 <body>
@@ -39,14 +39,15 @@
                     <div class="tasks">
                         <div class="tasks-title">
                             <h6>Незавършени</h6>
-                            <button class="add-task-button" onclick="addTaskPopupShow()"> <i class="material-icons">add</i></button>
+                            <button class="add-task-button" onclick="addTaskPopupShow()"> <i
+                                    class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
                             <div class="task">
                                 <div class="task-title">
                                     <span><i class="material-icons">check</i></span>
                                     <h6>Изхвърли боклука</h6>
-                                    <button class="add-task-button-check">буттон</button>
+                                    <button class="add-task-button-check"><i class="material-icons">check</i></button>
                                 </div>
                                 <div class="task-color-category">
                                     <span class="task-color" style="background-color: lightblue"></span>
@@ -62,7 +63,8 @@
                     <div class="tasks">
                         <div class="tasks-title">
                             <h6>Започната</h6>
-                            <button class="add-task-button" onclick="addTaskPopupShow()"> <i class="material-icons">add</i></button>
+                            <button class="add-task-button" onclick="addTaskPopupShow()"> <i
+                                    class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
                             <div class="task">
@@ -116,7 +118,8 @@
                     <div class="tasks">
                         <div class="tasks-title">
                             <h6>Завършени</h6>
-                            <button class="add-task-button" onclick="addTaskPopupShow()"> <i class="material-icons">add</i></button>
+                            <button class="add-task-button" onclick="addTaskPopupShow()"> <i
+                                    class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
                             <div class="task">
@@ -141,6 +144,8 @@
     </main>
 
 
+
+    <div class="main-img"></div>
     <div class="page-darken"></div>
 </body>
 
