@@ -29,11 +29,11 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <tr>
-        <td>John</td>
-        <td>Doe</td>
+      <tr>
+        <td>Изхвърли боклука</td>
+        <td>Трябва да изхвърля малкия</td>
         <td>john@example.com</td>
-      </tr> -->
+      </tr>
     </tbody>
   </table>
         </div>
