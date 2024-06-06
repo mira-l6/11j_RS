@@ -15,7 +15,7 @@
     $password="";
     $dbname="tododb";
 
-    $con = new mysqli($host, $user, $dbname, $port)
+    $con = new mysqli($host, $user, $password, $dbname, $port)
 	or die ('Could not connect to the database server' . mysqli_connect_error());
 
     //$con->close();

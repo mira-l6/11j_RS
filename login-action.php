@@ -4,10 +4,10 @@
     include "db_connection.php"; 
 
 
-   if(isset($_POST['email']) && isset($_POST['pass'])) 
+   if(isset($_POST['email']) && isset($_POST['password'])) 
    {
     $email = trim($_POST['email']);
-    $password = trim($_POST['pass']);
+    $password = trim($_POST['password']);
 
     
     $sqllogin = "SELECT * FROM `login` WHERE `login_Email`='$email' AND `login_Password`='$password'";

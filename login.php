@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="form-floating mt-3 mb-3">
-                    <input type="text" class="form-control" id="pass" placeholder="Въведете парола" name="password">
+                    <input type="text" class="form-control" id="password" placeholder="Въведете парола" name="password">
                     <label for="pass">Парола</label>
                 </div>
 
