@@ -20,35 +20,35 @@ include "menu.php";
     <main>
         <div class="register-box">
             <h2>Регистрация</h2>
-            <form action="" method="post">
+            <form id="register-form" action="register-action.php" method="post">
                 <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" id="email" placeholder="Въведете имейл" name="email">
-                    <label for="email">Първо име</label>
+                    <input type="text" class="form-control" id="firstname" placeholder="Въведете име" name="firstname">
+                    <label for="firstname">Първо име</label>
                 </div>
                 <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" id="email" placeholder="Въведете имейл" name="email">
-                    <label for="email">Фамилия</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Въведете фамилия" name="lastname">
+                    <label for="lastname">Фамилия</label>
                 </div>
                 
                 <div class="d-flex register-checkboxes">
                     <div class="form-check">
-                        <input id="" type="radio" id="woman" name="gender" class="form-check-input" checked/>Жена
+                        <input type="radio" id="woman" name="gender" class="form-check-input" checked/>Жена
                         <label class="form-check-label" for="woman"></label>
                     </div>
                     <div class="form-check">
-                        <input id="" type="radio" id="man" name="gender" class="form-check-input" />Мъж
+                        <input type="radio" id="man" name="gender" class="form-check-input" />Мъж
                         <label class="form-check-label" for="man"></label>
                     </div>
                 </div>
 
                 <div class="birthdate-area">
-                    <label for="" class="form-control">Дата на раждане</label>
-                    <input type="date" class="form-control">
+                    <label for="birthday" class="form-control">Дата на раждане</label>
+                    <input id="birthday" type="date" class="form-control">
                 </div>
 
                 <div class="color-area">
-                    <select name="" id="" class="form-select">
-                        <option value="">Цвят</option>
+                    <select name="colour" id="colour" class="form-select">
+                        <option value="" >Цвят</option>
                         <option value="red">Червено</option>
                         <option value="orange">Оранжево</option>
                         <option value="yellow">Жълто</option>
@@ -62,13 +62,13 @@ include "menu.php";
                 </div>
 
                 <div class="upload-img-area">
-                    <label for="" class="form-control">Прикачване на снимка</label>
-                    <input type="file" class="form-control">
+                    <label for="picture" class="form-control">Прикачване на снимка</label>
+                    <input id="picture" type="file" class="form-control">
                 </div>
 
                 <div class="form-floating mt-3 mb-3">
-                    <input type="text" class="form-control" id="pass" placeholder="Въведете парола" name="password">
-                    <label for="pass">Телефон</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Въведете телефон" name="phone">
+                    <label for="phone">Телефон</label>
                 </div>
 
                 <div class="form-floating mb-3 mt-3">
@@ -78,12 +78,12 @@ include "menu.php";
 
 
                 <div class="form-floating mt-3 mb-3">
-                    <input type="password" class="form-control" id="pass" placeholder="Въведете парола" name="password">
-                    <label for="pass">Парола</label>
+                    <input type="password" class="form-control" id="password" placeholder="Въведете парола" name="password">
+                    <label for="password">Парола</label>
                 </div>
                 <div class="form-floating mt-3 mb-3">
-                    <input type="text" class="form-control" id="pass" placeholder="Въведете парола" name="password">
-                    <label for="pass">Повторете паролата</label>
+                    <input type="text" class="form-control" id="password2" placeholder="Повторете паролата" name="password2">
+                    <label for="password2">Повторете паролата</label>
                 </div>
 
                 <input type="submit" value="Регистрирай се">
