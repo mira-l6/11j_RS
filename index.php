@@ -17,7 +17,7 @@
 <body>
     <div class="main-title d-flex flex-column justify-content-center align-items-center">
         <h1>Списък със задачи</h1>
-        <button onclick="window.location = 'todo-list.php'" class="main-todo-button">Списък</button>
+        <button onclick="window.location = 'login.php'" class="main-todo-button">Вход / Регистрация</button>
     </div>
 </body>
 

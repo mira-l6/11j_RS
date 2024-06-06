@@ -7,3 +7,19 @@
 .navbar a:nth-child(2):hover{
     border:  none;
 }
+
+main{
+    width: 100vw;
+    height: calc(100vh - 73.75px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.todo-list-box{
+    opacity: 0.8;
+    margin-top: 3em;
+    padding: 1em;
+    background-color: #e6e6e6;
+    width: 80%;
+}

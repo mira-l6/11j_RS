@@ -24,5 +24,6 @@ a, a:visited, a:active{
     color: white;
 }
 .navbar a:hover{
+    color: white !important;
     border-bottom: 1px solid white;
 }

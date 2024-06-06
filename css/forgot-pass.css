@@ -1,0 +1,29 @@
+main{
+    width: 100vw;
+    height: calc(100vh - 73.75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar{
+    padding-left: 1em;
+}
+
+.forgot-pass-box{
+    padding: 3em;
+    background-color: #e6e6e6;
+    width: 33em;
+}
+
+.forgot-pass-box h2{
+    margin-bottom: 1em !important;
+}
+
+input[type="submit"]{
+    background-color: pink;
+    font-size: 1.2em;
+    width: 100%;
+    margin-top: 1em;
+    padding: 0.5em;
+}   
