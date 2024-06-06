@@ -42,8 +42,8 @@ include "menu.php";
                 </div>
 
                 <div class="birthdate-area">
-                    <label for="birthday" class="form-control">Дата на раждане</label>
-                    <input id="birthday" type="date" class="form-control">
+                    <label for="birthday" class="form-control">Дата на раждане (YYYY-MM-DD)</label>
+                    <input id="birthday" type="string" class="form-control" pattern="\d{4}-\d{2}-\d{2}">
                 </div>
 
                 <div class="color-area">

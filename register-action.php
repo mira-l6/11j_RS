@@ -12,62 +12,82 @@
         {
             $lastname = trim($_POST['lastname']);
         }
+        else
+        {
+            $lastname = null;
+        }
         if(isset($_POST['man']))
         {
             $gender = "man";
         }
-        if(isset($_POST['woman']))
+        else if(isset($_POST['woman']))
         {
             $gender = "woman";
+        }
+        else
+        {
+            $gender = null;
         }
         if(isset($_POST['birthday']))
         {
             $birthday = trim($_POST['birthday']);
         }
+        else
+        {
+            $birthday = null;
+        }
         if(isset($_POST['colour']))
         {
             $colour = trim($_POST['colour']);
+        }
+        else
+        {
+            $colour = null;
         }
         if(isset($_POST['phone']))
         {
             $phone = trim($_POST['phone']);
         }
+        else
+        {
+            $phone = null;
+        }
 
         //image
         $imageid = 1;
-    
-    $sqlnewuser = "INSERT INTO `user`(`user_FirstName`, `user_LastName`, `user_Gender`, `user_Birthday`, `user_Phone`, `user_Email`, `user_Color`, `user_Image_ID`) 
-            VALUES('$firstname', '$lastname', '$gender', '$birthday', '$phone', '$email', '$colour', '$imageid')";
-    $resultnewuser = mysqli_query($con, $sqlnewuser);
+        echo $birthday;
+        $sqlnewuser = "INSERT INTO `user`(`user_FirstName`, `user_LastName`, `user_Gender`, `user_Birthday`, `user_Phone`, `user_Email`, `user_Color`) 
+            VALUES('$firstname', '$lastname', '$gender', '2006-06-25', '$phone', '$email', '$colour')";
+        $resultnewuser = mysqli_query($con, $sqlnewuser);
 
-    if($resultnewuser)
-    {
-        $newuserid = mysqli_insert_id($con);
-
-        $sqlnewlogin = "INSERT INTO `login`(`login_Email`, `login_Password`, `login_UserID`)
-                VALUES('$email', '$password', '$newuserid')";
-        $resultnewlogin = mysqli_query($con, $sqlnewlogin);
-        if($resultnewlogin)
+        if($resultnewuser)
         {
-            $_SESSION['login_UserID'] = $newuserid;
-            header("Location: profile.php");
+            $newuserid = mysqli_insert_id($con);
+
+            $sqlnewlogin = "INSERT INTO `login`(`login_Email`, `login_Password`, `login_UserID`)
+                VALUES('$email', '$password', '$newuserid')";
+            $resultnewlogin = mysqli_query($con, $sqlnewlogin);
+            if($resultnewlogin)
+            {
+                $_SESSION['login_UserID'] = $newuserid;
+                header("Location: profile.php");
+            }
+            else
+            {
+            header("Location: register.php?error=Неуспешно добавяне на потребител в login");
+            }
         }
         else
         {
-            header("Location: register.php?error=Неуспешно добавяне на потребител в login");
+            header("Location: register.php?error=Неуспешно добавяне на потребител в юзър");
         }
-    }
-    else
-    {
-        header("Location: register.php?error=Неуспешно добавяне на потребител в юзър");
-    }
 
-    if(mysqli_num_rows($resultlogin) === 1) 
-    {
-        $rowlogin = mysqli_fetch_assoc($resultlogin);
-
-        if($rowlogin['login_Email'] === $email && $rowlogin['login_Password'] === $password) 
+        if(mysqli_num_rows($resultlogin) === 1) 
         {
+            $rowlogin = mysqli_fetch_assoc($resultlogin);
+
+            if($rowlogin['login_Email'] === $email && $rowlogin['login_Password'] === $password) 
+            {
                 $_SESSION['login_Email'] = $rowlogin['login_Email'];
                 $_SESSION['login_Password'] = $rowlogin['login_Password'];
                 $_SESSION['login_UserID'] = $rowlogin['login_UserID'];
@@ -95,7 +115,9 @@
                 header("Location: login.php?error=Грешно потребителско име или парола");
                 exit();
             }
-        } else {
+        } 
+        else 
+        {
             header("Location: login.php?error=Грешно потребителско име или парола");
             exit();
         }
