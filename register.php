@@ -63,7 +63,7 @@ include "menu.php";
 
                 <div class="upload-img-area">
                     <label for="picture" class="form-control">Прикачване на снимка</label>
-                    <input id="picture" type="file" class="form-control">
+                    <input id="picture" name="images[]" type="file" class="form-control">
                 </div>
 
                 <div class="form-floating mt-3 mb-3">
