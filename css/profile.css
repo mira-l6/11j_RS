@@ -225,3 +225,82 @@ p{
     filter: brightness(40%);
     z-index: -1;
 }
+
+.page-darken, .popup{
+    display: none;
+}
+.active{
+    display: block !important;
+}
+.page-darken{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 2;
+}
+
+.popup{
+    position: fixed;
+    top: 7%;
+    bottom: 10%;
+    left: 30%;
+    right: 25%;
+    width: 40em;
+    height: 40em;
+    margin-bottom: 4em;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.date label{
+    margin-bottom: 0 !important;
+}
+.date:first-child label, .date:first-child input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.date:nth-child(2) label, .date:nth-child(2) input{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.date:first-child label{
+    border-right: 0;
+}
+.date:nth-child(2) label{
+    border-left: 0;
+}
+.date:first-child label{
+    border-bottom-left-radius: 0;
+}
+.date:first-child input{
+    border-top-left-radius: 0;
+}
+.date:nth-child(2) label{
+    border-bottom-right-radius: 0;
+}
+.date:nth-child(2) input{
+    border-top-right-radius: 0;
+}
+
+.popup-buttons button, .popup-buttons input{
+    border: none;
+    padding: 1em 2em 1em 2em;
+    width: 49%;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+.popup-buttons input{
+    background-color: pink;
+}
+.popup-buttons button{
+    background-color: rgb(234, 145, 145);
+}
+
+.popup-buttons button:hover, .popup-buttons input:hover{
+    filter: brightness(90%);
+}
