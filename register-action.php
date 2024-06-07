@@ -58,17 +58,19 @@
         $isupload = 1;
 
         //dali ima kacheni failove
-        if(!empty($_FILES['images']['name'][0])) 
+        if(isset($_POST['picture'])) 
         {
-        //obhozhdane na vsichki snimki
-            foreach($_FILES['images']['name'] as $key => $val) 
+            $targetdirectory = "img/";
+            $isupload = 1;
+            //obhozhdane na vsichki snimki
+            foreach($_FILES['file']['name'] as $key => $val) 
             {
-                $target_file = $targetdirectory . basename($_FILES['images']['name'][$key]);
+                $target_file = $targetdirectory . basename($_FILES['file']['name'][$key]);
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
                 $uploadOk = 1;
 
                 //proverka dali e kacheno izobrazhenie
-                $check = getimagesize($_FILES['images']['tmp_name'][$key]);
+                $check = getimagesize($_FILES['file']['tmp_name'][$key]);
                 if($check === false) 
                 {
                     echo "Файлът не е изображение.";
@@ -83,7 +85,7 @@
                 }
 
                 // ogranichenie za razmera
-                if($_FILES['images']['size'][$key] > 5000000) 
+                if($_FILES['file']['size'][$key] > 5000000) 
                 {
                     echo "Файлът е твърде голям.";
                     $uploadOk = 0;
@@ -104,10 +106,10 @@
                 } 
                 else 
                 {
-                    if(move_uploaded_file($_FILES['images']['tmp_name'][$key], $target_file)) 
+                    if(move_uploaded_file($_FILES['file']['tmp_name'][$key], $target_file)) 
                     {
                         //echo "Файлът ". htmlspecialchars(basename($_FILES['images']['name'][$key])). " беше успешно качен.";
-                        $image_name = htmlspecialchars(basename($_FILES['images']['name'][$key]));
+                        $image_name = htmlspecialchars(basename($_FILES['file']['name'][$key]));
                     
                         $sql_img = "INSERT INTO `image` (`image_Name`, `image_URL`, `image_Size`)
                                 VALUES ('$image_name', '$target_file', '$img_size')";
@@ -119,27 +121,29 @@
                         }
                         else
                         {
-                            $userpicid = null;
+                            header("Location: register.php?error=Неуспешно добавяне на snimka v image");
                         }
                     }
                     else 
                     {
-                        echo "Възникна грешка при качването на вашия файл.";
+                        header("Location: register.php?error=Възникна проблем при качването на вашия файл");
                     }
                 }
             }
         } 
         else 
         {
-            echo "Не са избрани файлове за качване.";
+            header("Location: register.php?error=Не са избрани файлове за качване");
         }
+        //img handle end
         
-        $sqlnewuser = "INSERT INTO `user`(`user_FirstName`, `user_LastName`, `user_Gender`, `user_Birthday`, `user_Phone`, `user_Email`, `user_Color`, `user_ImageID`) 
-            VALUES('$firstname', '$lastname', '$gender', '2006-06-25', '$phone', '$email', '$colour', '$userpicid')";
+        $sqlnewuser = "INSERT INTO `user`(`user_FirstName`, `user_LastName`, `user_Gender`, `user_Birthday`, `user_Phone`, `user_Email`, `user_Color`) 
+            VALUES('$firstname', '$lastname', '$gender', '2006-06-25', '$phone', '$email', '$colour')";
         $resultnewuser = mysqli_query($con, $sqlnewuser);
 
         if($resultnewuser)
         {
+            $newuserid = mysqli_insert_id($con);
 
             $sqlnewlogin = "INSERT INTO `login`(`login_Email`, `login_Password`, `login_UserID`)
                 VALUES('$email', '$password', '$newuserid')";
