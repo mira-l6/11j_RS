@@ -23,7 +23,7 @@ include "menu.php";
                 </div>
                 <div class="profile-subinfo">
                     <div>
-                        <p><span>Mira</span> <span>Lambreva</span></p>
+                        <h6><span>Mira</span> <span>Lambreva</span></h6>
                         <p>06/25/2006</p>
                         <p>miralambreva@gmail.com</p>
                         <p>0895432535</p>
@@ -44,9 +44,11 @@ include "menu.php";
                         </div>
                         <div class="tasks-space">
                             <div class="task">
-                                <div class="task-title">
-                                    <span><i class="material-icons">check</i></span>
-                                    <h6>Изхвърли боклука</h6>
+                                <div class="task-inner d-flex flex-row">
+                                    <div class="task-title">
+                                        <span><i class="material-icons">check</i></span>
+                                        <h6>Изхвърли боклука</h6>
+                                    </div>
                                     <button class="add-task-button-check"><i class="material-icons">check</i></button>
                                 </div>
                                 <div class="task-color-category">
@@ -56,64 +58,38 @@ include "menu.php";
                                 <div class="task-due-date">
                                     <!-- <img src="" alt=""> -->
                                     <p>До <span>06/06/2024</span></p>
+                                    <button class="delete-task-button"><i class="material-icons">delete</i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="tasks">
                         <div class="tasks-title">
-                            <h6>Започната</h6>
+                            <h6>Започнати</h6>
                             <button class="add-task-button" onclick="addTaskPopupShow()"> <i
                                     class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
                             <div class="task">
-                                <div class="task-title">
-                                    <span><i class="material-icons">local_florist</i></span>
-                                    <h6>Изхвърли боклука</h6>
+                                <div class="task-inner d-flex flex-row">
+                                    <div class="task-title">
+                                        <span><i class="material-icons">local_florist</i></span>
+                                        <h6>Изхвърли боклука</h6>
+                                    </div>
+                                    <button class="add-task-button-check"><i class="material-icons">check</i></button>
                                 </div>
                                 <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightgreen    "></span>
-                                    <span class="task-category">Училище</span>
+                                    <span class="task-color" style="background-color: lightblue"></span>
+                                    <span class="task-category">Работа</span>
                                 </div>
                                 <div class="task-due-date">
                                     <!-- <img src="" alt=""> -->
                                     <p>До <span>06/06/2024</span></p>
+                                    <button class="delete-task-button"><i class="material-icons">delete</i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="tasks-space">
-                            <div class="task">
-                                <div class="task-title">
-                                    <span><i class="material-icons">local_florist</i></span>
-                                    <h6>Изхвърли боклука</h6>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightgreen    "></span>
-                                    <span class="task-category">Училище</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <!-- <img src="" alt=""> -->
-                                    <p>До <span>06/06/2024</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tasks-space">
-                            <div class="task">
-                                <div class="task-title">
-                                    <span><i class="material-icons">local_florist</i></span>
-                                    <h6>Изхвърли боклука</h6>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightgreen    "></span>
-                                    <span class="task-category">Училище</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <!-- <img src="" alt=""> -->
-                                    <p>До <span>06/06/2024</span></p>
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
                     <div class="tasks">
                         <div class="tasks-title">
@@ -134,6 +110,7 @@ include "menu.php";
                                 <div class="task-due-date">
                                     <!-- <img src="" alt=""> -->
                                     <p>До <span>06/06/2024</span></p>
+                                    <button class="delete-task-button"><i class="material-icons">delete</i></button>
                                 </div>
                             </div>
                         </div>

@@ -138,7 +138,7 @@ p{
     margin-bottom: 0 !important;
 }
 .task-due-date{
-    padding: 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
 .tasks{
@@ -157,17 +157,20 @@ p{
     color: rgb(69, 144, 230);
 }   
 
-.tasks:first-child .task:hover{
+.tasks-space .task:hover{
     box-shadow: -2px 0px 27px 7px rgba(196, 191, 196, 0.4);
 }
 
 .add-task-button-check{
     display: none;
 }
+.delete-task-button{
+    display: none;
+}
 .add-task-button-check i{
     font-size: 1em;
 }
-.tasks:first-child .task:hover .add-task-button-check{
+.tasks-space:first-child .task:hover .add-task-button-check, .tasks-space:nth-child(2) .task:hover .add-task-button-check{
     display: flex !important;
     width: 1.5em;
     height: 1.5em;
@@ -176,10 +179,38 @@ p{
     background: transparent;
     border: none;
     background-color: rgb(81, 231, 81);
+    margin-top: 0.5em;
+    margin-right: 0.5em;
     border-radius: 50%;
     justify-content: center;
     align-items: center;
     justify-self: flex-end;
+}
+.tasks-space .task:hover .delete-task-button{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 0 !important;
+    height: 20.8px;
+    width: 20.8px;
+}
+.delete-task-button i{
+    color: red;
+    font-size: 1.5em;
+}
+.delete-task-button:active, .add-task-button-check:active{
+    border: none;
+}
+.task-due-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.task-inner{
+    justify-content: space-between;
 }
 
 .main-img{
@@ -189,6 +220,8 @@ p{
     left: 0;
     bottom: 0;
     right: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
     filter: brightness(40%);
     z-index: -1;
 }
