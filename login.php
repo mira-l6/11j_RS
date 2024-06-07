@@ -22,12 +22,12 @@
             <h2>Вход</h2>
             <form id="login-form" action="login-action.php" method="post">
                 <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" id="email" placeholder="Въведете имейл" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Въведете имейл" name="email">
                     <label for="email">Имейл</label>
                 </div>
 
                 <div class="form-floating mt-3 mb-3">
-                    <input type="text" class="form-control" id="password" placeholder="Въведете парола" name="password">
+                    <input type="password" class="form-control" id="password" placeholder="Въведете парола" name="password">
                     <label for="pass">Парола</label>
                 </div>
 
