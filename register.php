@@ -52,10 +52,10 @@ include "menu.php";
                         <option value="red">Червено</option>
                         <option value="orange">Оранжево</option>
                         <option value="yellow">Жълто</option>
-                        <option value="lightgreen">Светло зелено</option>
-                        <option value="darkgreen">Тъмно зелено</option>
-                        <option value="lightblue">Светло синьо</option>
-                        <option value="darkblue">Тъмно синьо</option>
+                        <option value="lightgreen">Светлозелено</option>
+                        <option value="darkgreen">Тъмнозелено</option>
+                        <option value="lightblue">Светлосиньо</option>
+                        <option value="darkblue">Тъмносиньо</option>
                         <option value="purple">Лилаво</option>
                         <option value="babypink">Розово</option>
                     </select>
