@@ -20,7 +20,7 @@ include "menu.php";
     <main>
         <div class="register-box">
             <h2>Регистрация</h2>
-            <form id="register-form" action="register-action.php" method="post">
+            <form id="register-form" action="register-action-try.php" method="post">
                 <div class="form-floating mb-3 mt-3">
                     <input type="text" class="form-control" id="firstname" placeholder="Въведете име" name="firstname">
                     <label for="firstname">Първо име</label>
@@ -32,11 +32,11 @@ include "menu.php";
                 
                 <div class="d-flex register-checkboxes">
                     <div class="form-check">
-                        <input type="radio" id="woman" name="gender" class="form-check-input" checked/>Жена
+                        <input type="radio" id="woman" name="gender" value=1 class="form-check-input" checked/>Жена
                         <label class="form-check-label" for="woman"></label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" id="man" name="gender" class="form-check-input" />Мъж
+                        <input type="radio" id="man" value=1 name="gender" class="form-check-input" />Мъж
                         <label class="form-check-label" for="man"></label>
                     </div>
                 </div>
@@ -63,8 +63,10 @@ include "menu.php";
 
                 <div class="upload-img-area">
                     <label for="picture" class="form-control">Прикачване на снимка</label>
-                    <input id="picture" name="picture" type="file" class="form-control" enctype="multipart/form-data">
+                    <input id="picture" name="picture" type="file">
+                    <!--class="form-control" enctype="multipart/form-data">-->
                 </div>
+                
 
                 <div class="form-floating mt-3 mb-3">
                     <input type="text" class="form-control" id="phone" placeholder="Въведете телефон" name="phone">
