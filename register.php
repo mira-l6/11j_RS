@@ -20,7 +20,7 @@ include "menu.php";
     <main>
         <div class="register-box">
             <h2>Регистрация</h2>
-            <form id="register-form" action="register-action-try.php" method="post">
+            <form id="register-form" action="register-action-try2.php" method="post">
                 <div class="form-floating mb-3 mt-3">
                     <input type="text" class="form-control" id="firstname" placeholder="Въведете име" name="firstname">
                     <label for="firstname">Първо име</label>
@@ -69,12 +69,12 @@ include "menu.php";
                 
 
                 <div class="form-floating mt-3 mb-3">
-                    <input type="text" class="form-control" id="phone" placeholder="Въведете телефон" name="phone">
+                    <input type="text" class="form-control" id="phone" placeholder="Въведете телефон" name="phone" autocomplete="off">
                     <label for="phone">Телефон</label>
                 </div>
 
                 <div class="form-floating mb-3 mt-3">
-                    <input type="email" class="form-control" id="email" placeholder="Въведете имейл" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Въведете имейл" name="email" autocomplete="off">
                     <label for="email">Имейл</label>
                 </div>
 

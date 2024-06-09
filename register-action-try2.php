@@ -1,14 +1,13 @@
 <?php
     session_start();
-    include "db_connection.php";
+    include "db_connection.php"; 
 
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') 
-{
-    if(isset($_POST['firstname']) && isset($_POST['email']) && isset($_POST['password']))
+    if(isset($_POST['firstname']) && isset($_POST['email']) && isset($_POST['password'])) 
     {
         $firstname = trim($_POST['firstname']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
         if(isset($_POST['lastname']))
         {
             $lastname = trim($_POST['lastname']);
@@ -17,21 +16,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $lastname = null;
         }
-        
-        $woman = isset($_POST['woman']) ? 1 : 0;
-        $man = isset($_POST['man']) ? 1 : 0;
-        if($woman)
-        {
-            $gender = "woman";
-        }
-        else if($man)
+        if(isset($_POST['man']))
         {
             $gender = "man";
+        }
+        else if(isset($_POST['woman']))
+        {
+            $gender = "woman";
         }
         else
         {
             $gender = null;
-        }      
+        }
         if(isset($_POST['birthday']))
         {
             $birthday = trim($_POST['birthday']);
@@ -40,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $birthday = null;
         }
-        //$bday = $_POST['birthday'];
         if(isset($_POST['colour']))
         {
             $colour = trim($_POST['colour']);
@@ -57,9 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $phone = null;
         }
-        $email = trim($_POST['email']);
-        $password = trim($_POST['password']);
-/*
+
+//image handling
+        $targetdirectory = "img/";
+        $isupload = 1;
         if(isset($_FILES['picture']))
         {
             $picture = $_FILES['picture'];
@@ -125,11 +121,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     else
                     {
                         header("Location: register.php?error=Грешка при добавянето на снимка в имаге");
+                        exit();
                     }
                 } 
                 else 
                 {
                     header("Location: register.php?error=Грешка при качването на файла");
+                    exit();
                 }
             }
         }
@@ -137,30 +135,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $imageid = null;
         }
-*/
-        //dobavqne na ostanalite danni
-        $sqladduser = "INSERT INTO `user`(`user_FirstName`, `user_LastName`, `user_Gender`, `user_Birthday`, `user_Phone`, `user_Email`, `user_Color`)
-                VALUES('$firstname', '$lastname', '$gender', '$birthday', '$phone', '$email', '$colour')";
-        $resultadduser = mysqli_query($con, $sqladduser);
-        if($resultadduser)
+//img handling end
+        
+        $sqlnewuser = "INSERT INTO `user`(`user_FirstName`, `user_LastName`, `user_Gender`, `user_Birthday`, `user_Phone`, `user_Email`, `user_Color`) 
+            VALUES('$firstname', '$lastname', '$gender', '2006-06-25', '$phone', '$email', '$colour')";
+        $resultnewuser = mysqli_query($con, $sqlnewuser);
+
+        if($resultnewuser)
         {
-            $_SESSION['userid'] = mysqli_insert_id($con);
-            header("Location: profile.php?Uspeshno se registrirahte");
+            $newuserid = mysqli_insert_id($con);
+
+            $sqlnewlogin = "INSERT INTO `login`(`login_Email`, `login_Password`, `login_UserID`)
+                VALUES('$email', '$password', '$newuserid')";
+            $resultnewlogin = mysqli_query($con, $sqlnewlogin);
+            if($resultnewlogin)
+            {
+                $_SESSION['login_UserID'] = $newuserid;
+                header("Location: profile.php");
+            }
+            else
+            {
+                header("Location: register.php?error=Неуспешно добавяне на потребител в login");
+            }
         }
         else
         {
-            header("Location: register.php?error=Грешка при добавяне на потребител в юзър");            
+            header("Location: register.php?error=Неуспешно добавяне на потребител в юзър");
         }
-
-        $con->close();
-    }
-    else
-    {
-        header("Location: register.php?error=Липсва име, имейл или парола");
-    }
-}
-else
+} 
+else 
 {
-    header("Location: register.php?Сървър методът не е пост");
+    header("Location: login.php?не бачкам");
+    exit();
 }
-
