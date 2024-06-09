@@ -1,3 +1,25 @@
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+
 .navbar a:nth-child(5){
     background-color: rgb(246, 146, 162);
     color: black;
@@ -6,4 +28,128 @@
 }
 .navbar a:nth-child(5):hover{
     border:  none;
+}
+
+body{
+    overflow: hidden;
+}
+
+.main{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories-box{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin: 3em 1em 1em 1em;
+    width: 100%;
+    height: 100%;
+}
+.all-tasks{
+    background-color: #e6e6e6;
+    width: 70%;
+    border-radius: 5px;
+}
+.categories-space{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 1em;
+}
+
+.all-categories, .add-category-box{
+    border-radius: 5px;
+    width: 100%;
+    height: 50%;
+    background-color: #e6e6e6;
+}
+
+
+.all-tasks-display{
+    background-color: rgb(223, 221, 221);
+    height: calc(100% - 76.8px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+}
+
+.category-tasks{
+    gap: 1em;
+    padding: 1em;
+    height: 307.96px;
+    overflow-y: scroll;
+}
+
+.category-container{
+    width: 32%;
+}
+.category-container h5{
+    padding: 1em;
+    border-bottom: 2px solid pink;
+    border-radius: 5px;
+}
+
+input[type="submit"]{
+    background-color: pink;
+    font-size: 1em;
+    border: 2px solid grey;
+    width: 100%;
+    margin-top: 1.5em;
+    padding: 0.5em;
+}
+
+
+
+
+
+
+
+
+
+
+.task{
+    background-color: white;
+    border-radius: 5px;
+    padding: 1em;
+}
+.task-title{
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.4em;
+}
+/* .task-title div{
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.4em;
+} */
+.task-color-category{
+    display: flex;
+    padding-left: 0.5em;
+    gap: 0.5em;
+}
+.task-color{
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+}
+.task-category{
+    background-color: pink;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 5px;
+}
+.task-due-date p{
+    margin-bottom: 0;
+    margin-top: 0.5em;
 }
