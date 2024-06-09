@@ -1,6 +1,31 @@
 <?php
+session_start();
 include "menu.php";
+include "db_connection.php";
 // include "main_background.php";
+
+//vzimane na infoto ot bd
+$userid = 6;
+
+$sqluser = "SELECT * FROM `user` WHERE `user_ID`='$userid'";
+$resultuser = mysqli_query($con, $sqluser);
+if($resultuser)
+{
+    $rowuser = mysqli_fetch_assoc($resultuser);
+    $firstname = $rowuser['user_FirstName'];
+    $lastname = $rowuser['user_LastName'];
+    $gender = $rowuser['user_Gender'];
+    $birthday = $rowuser['user_Birthday'];
+    $phone = $rowuser['user_Phone'];
+    $email = $rowuser['user_Email'];
+    $colour = $rowuser['user_Color'];
+}
+else
+{
+    echo ":(";
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="bg">
@@ -25,10 +50,10 @@ include "menu.php";
                 </div>
                 <div class="profile-subinfo">
                     <div>
-                        <h6><span>Mira</span> <span>Lambreva</span></h6>
-                        <p>06/25/2006</p>
-                        <h6>miralambreva@gmail.com</h6>
-                        <p>0895432535</p>
+                        <h6><span><?php echo $firstname?></span> <span><?php echo $lastname?></span></h6>
+                        <p><?php echo $birthday?></p>
+                        <h6><?php echo $email?></h6>
+                        <p><?php echo $phone?></p>
                         <p></p>
                     </div>
                 </div>
