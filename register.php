@@ -61,13 +61,6 @@ include "menu.php";
                     </select>
                 </div>
 
-                <div class="upload-img-area">
-                    <label for="picture" class="form-control">Прикачване на снимка</label>
-                    <input id="picture" name="picture" type="file">
-                    <!--class="form-control" enctype="multipart/form-data">-->
-                </div>
-                
-
                 <div class="form-floating mt-3 mb-3">
                     <input type="text" class="form-control" id="phone" placeholder="Въведете телефон" name="phone" autocomplete="off">
                     <label for="phone">Телефон</label>
