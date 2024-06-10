@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Списък със задачи</title>
-    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/eventCal.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
     </div>
 
 
-    <script src="js/calendar.js"></script>
+    <script src="js/eventCal.js"></script>
 </body>
 
 </html>
