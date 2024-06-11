@@ -8,6 +8,9 @@ main{
 .navbar{
     padding-left: 1em;
 }
+.navbar a{
+    color: white !important;
+}
 .login-box{
     padding: 3em;
     background-color: #e6e6e6;
@@ -50,6 +53,6 @@ input[type="submit"]{
     padding: 0.5em;
 }
 
-a:visited{
+/* .login-additional a:visited{
     color: rgb(47, 45, 45) !important;
-}
+} */
