@@ -30,6 +30,10 @@
     border:  none;
 }
 
+.navbar{
+    padding-left: 1em !important;
+}
+
 body{
     overflow: hidden;
 }
