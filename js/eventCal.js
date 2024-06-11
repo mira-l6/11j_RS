@@ -1,70 +1,76 @@
-const calendar = document.getElementById('calendar');
-const taskModal = document.getElementById('taskModal');
-const modalDate = document.getElementById('modalDate');
-const taskList = document.getElementById('taskList');
-const closeModal = document.getElementsByClassName('close')[0];
+const calendar = document.querySelector(".calendar"),
+    date = document.querySelector(".date"),
+    daysContainer = document.querySelector(".days"),
+    prev = document.querySelector(".prev");
+next = document.querySelector(".next");
 
-const tasks = {
-    '2024-06-01': ['Task 1', 'Task 2'],
-    '2024-06-02': ['Task 3'],
-    '2024-06-05': ['Task 4', 'Task 5', 'Task 6']
-};
+let today = new Date();
+let activeDay;
+let month = today.getMonth();
+let year = today.getFullYear();
 
-function createCalendar(year, month) {
-    calendar.innerHTML = '';
-    const firstDay = new Date(year, month).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+const months = 
+[
+    "Януари",
+    "Февруари",
+    "Март",
+    "Април",
+    "Май",
+    "Юни",
+    "Юли",
+    "Август",
+    "Септември",
+    "Октомври",
+    "Ноември",
+    "Декември",
+];
 
-    for (let i = 0; i < firstDay; i++) {
-        const emptyCell = document.createElement('div');
-        calendar.appendChild(emptyCell);
+//dobavqne na dni
+function initCalendar()
+{
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const prevLastDay = new Date(year, month, 0);
+    const prevDays = prevLastDay.getDate();
+    const lastDate = lastDay.getDate();
+    const day = firstDay.getDay()
+    const nextDays = 7 - lastDay.getDay() - 1;
+
+    //obnovqvane na datata gore v kalendara
+    date.innerHTML = months[month] + " " + year;
+
+    //dobavqne na dni
+    let days = "";
+
+    //dnite na predishen mesec
+    for(let x = day - 1; x > 0; x--)
+    {
+        days += `<div class="day prev-date">${prevDays - x + 1}</div>`;
     }
 
-    for (let day = 1; day <= daysInMonth; day++) {
-        const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const dayCell = document.createElement('div');
-        dayCell.className = 'day';
-        dayCell.innerHTML = `<span>${day}</span>`;
-
-        if (tasks[date]) {
-            tasks[date].forEach(task => {
-                const taskDiv = document.createElement('div');
-                taskDiv.className = 'task';
-                taskDiv.textContent = task;
-                dayCell.appendChild(taskDiv);
-            });
+    //dnite na segashniq mesec
+    for(let i = 1; i <= lastDate; i++)
+    {
+        //dobavqne na klas today ako denqt e dnes
+        if(i === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth())
+        {
+            days += `<div class="day today">${i}</div>`;
+        }
+        else
+        {
+            //добавяне на останалите dni
+            days += `<div class="day">${i}</div>`;
         }
 
-        dayCell.addEventListener('click', () => showTasks(date));
-        calendar.appendChild(dayCell);
     }
+
+    //dnite na sledvashtiq mesec
+    for(let j = 1; j <= nextDays + 1; j++)
+    {
+        days += `<div class="day next-date">${j}</div>`;
+    }
+
+    daysContainer.innerHTML = days;
 }
 
-function showTasks(date) {
-    modalDate.textContent = `Tasks for ${date}`;
-    taskList.innerHTML = '';
-
-    if (tasks[date]) {
-        tasks[date].forEach(task => {
-            const taskItem = document.createElement('li');
-            taskItem.textContent = task;
-            taskList.appendChild(taskItem);
-        });
-    } else {
-        taskList.innerHTML = '<li>No tasks</li>';
-    }
-
-    taskModal.style.display = 'block';
-}
-
-closeModal.onclick = function() {
-    taskModal.style.display = 'none';
-};
-
-window.onclick = function(event) {
-    if (event.target == taskModal) {
-        taskModal.style.display = 'none';
-    }
-};
-
-createCalendar(2024, 5);  // June 2024
+initCalendar();

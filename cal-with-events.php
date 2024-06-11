@@ -20,7 +20,7 @@
       <div class="calendar">
         <div class="month">
           <i class="fa fa-angle-left prev"></i>
-          <div class="date">June 2024</div>
+          <div class="date"></div>
           <i class="fa fa-angle-right next"></i>
         </div>
 
@@ -35,8 +35,8 @@
         </div>
 
         <div class="days">
-          <div class="day-prev-date">30</div>
-          <div class="day-prev-date">31</div>
+          <!--<div class="day prev-date">30</div>
+          <div class="day prev-date">31</div>
           <div class="day">1</div>
           <div class="day">2</div>
           <div class="day">3</div>
@@ -51,7 +51,7 @@
           <div class="day">12</div>
           <div class="day">13</div>
           <div class="day">14</div>
-          <div class="day-today-active">15</div>
+          <div class="day today active">15</div>
           <div class="day">16</div>
           <div class="day">17</div>
           <div class="day">18</div>
@@ -67,9 +67,16 @@
           <div class="day">28</div>
           <div class="day">29</div>
           <div class="day">30</div>
-          <div class="day-next-date">1</div>
-          <div class="day-next-date">2</div>
-          <div class="day-next-date">3</div>
+          <div class="day next-date">1</div>
+          <div class="day next-date">2</div>
+          <div class="day next-date">3</div>-->
+        </div>
+        <div class="goto-today">
+          <div class="goto">
+            <input type="text" placeholder="mm/yyyy" class="date-input">
+            <button class="goto-btn">go</button>
+          </div>
+          <button class="today-btn">today</button>
         </div>
       </div>
     </div>
