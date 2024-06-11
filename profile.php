@@ -2,7 +2,7 @@
 session_start();
 include "menu.php";
 include "db_connection.php";
-// include "main_background.php";
+include "main_background.php";
 
 //vzimane na infoto ot bd
 $userid = 6;
@@ -46,7 +46,8 @@ else
         <div class="profile-box">
             <div class="profile-info">
                 <div class="profile-image">
-                    <img src="img/kati.png" alt="">
+                    <img src="img/profile_icon.jpg" alt="">
+                    <button class="profile-edit-image-button"><a href="edit-image.php"><i class="material-icons">edit</i></a></button>
                 </div>
                 <div class="profile-subinfo">
                     <div>
@@ -66,7 +67,7 @@ else
                     <div class="tasks">
                         <div class="tasks-title">
                             <h6>Незавършени</h6>
-                            <button class="add-task-button" onclick="addTaskPopupShow()"> <i
+                            <button id="addTaskBtn" class="add-task-button"> <i
                                     class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
@@ -76,7 +77,7 @@ else
                                         <span><i class="material-icons">check</i></span>
                                         <h6>Изхвърли боклука</h6>
                                     </div>
-                                    <button id="addTaskBtn" onclick="addTaskPopupShow()" class="add-task-button-check"><i class="material-icons">check</i></button>
+                                    <button class="add-task-button-check"><i class="material-icons">check</i></button>
                                 </div>
                                 <div class="task-color-category">
                                     <span class="task-color" style="background-color: lightblue"></span>
@@ -149,8 +150,8 @@ else
 
 
 
-    <div class="main-img"></div>
-    <div class="popup">
+    <!-- <div class="main-img"></div> -->
+    <div class="popup" id="taskPopup">
         <h4 class="text-center mt-2 p-3">Добавяне на задача</h4>
         <form action="" method="post" class="ps-5 pe-5">
 
@@ -216,7 +217,7 @@ else
     </div>
     <div id="pageDarken" class="page-darken"></div>
 
-    <script src="js/addTaskPopupShow.js"></script>
+    <script src="js/addTaskPopup.js"></script>
 </body>
 
 </html>
