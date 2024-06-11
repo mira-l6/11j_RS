@@ -13,24 +13,20 @@
 
 body
 {
-   min-height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   background-color: #e221dc;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   width: 100vw;
 }
 
-.container
+.calendar-container
 {
-   position: relative;
-   width: 1200px;
-   min-height: 850px;
-   margin: 0 auto;
-   padding: 5px;
-   color: #fff;
-   display: flex;
-   border-radius: 10px;
-   background-color: #ffe7eb;
+   width: 95vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 4em;
+    background-color: #e6e6e6;
+    border-radius: 5px;
 }
 
 .left
@@ -269,4 +265,18 @@ body
    border: none;
    border-left: 1px solid var(--primary-clr);
    border-radius: 0;
+}
+
+
+.main-img{
+   background-image: url("../img/pinkdesk.png");
+   position: fixed;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   background-repeat: no-repeat;
+   background-size: cover;
+   filter: brightness(40%);
+   z-index: -1;
 }

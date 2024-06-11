@@ -1,6 +1,6 @@
 <?php
     include "menu.php";
-    include "main_background.php";
+    // include "main_background.php";
 ?>
 <!DOCTYPE html>
 <html lang="bg">
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="calendar-container">
     <div class="left">
       <div class="calendar">
         <div class="month">
@@ -82,6 +82,7 @@
     </div>
   </div>
 
+  <div class="main-img"></div>
   <script src="js/eventCal.js"></script>
 </body>
 
