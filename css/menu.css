@@ -26,7 +26,7 @@ a,
 a:visited,
 a:active {
   text-decoration: none !important;
-  color: black;
+  color: white;
 }
 
 .navbar {

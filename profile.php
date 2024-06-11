@@ -5,7 +5,7 @@ include "db_connection.php";
 include "main_background.php";
 
 //vzimane na infoto ot bd
-$userid = 6;
+$userid = 2;
 
 $sqluser = "SELECT * FROM `user` WHERE `user_ID`='$userid'";
 $resultuser = mysqli_query($con, $sqluser);
