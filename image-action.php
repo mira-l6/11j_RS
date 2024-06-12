@@ -64,14 +64,28 @@
                     $result_img = mysqli_query($con, $sql_img);
                     if($result_img)
                     {
-                        header("Location: profile.php?uspeshno dobavihte oferta i snimka");
+                        $imgid = mysqli_insert_id($con);
+
+                        //промяна на потребител в базата данни
+                        $userid = $_SESSION['login_UserID'];
+                        $sqlupdate = "UPDATE `user`
+                                        SET
+                                        `user_ImageID`='$imgid'
+                                        WHERE `user_ID`='$userid'";
+                        $resultupdate = mysqli_query($con, $sqlupdate);
+                        if($resultupdate)
+                        {
+                            header("Location: profile.php?uspeshno dobavihte oferta i snimka");
+                        }
+                        else
+                        {
+                            header("Location: profile.php?error=neshto se oburka :<");
+                        }
                     }
                     else
                     {
                         header("Location: add-offer-business.html?error=Neuspeshno se dobavi snimka");
                     }
-                    
-                    //промяна на потребител в базата данни
                 } 
                 else 
                 {
