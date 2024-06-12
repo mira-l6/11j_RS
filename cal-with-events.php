@@ -80,6 +80,24 @@
         </div>
       </div>
     </div>
+
+    <div class="right">
+      <div class="today-date">
+        <div class="event-day">Ср</div>
+        <div class="event-date">16 ноември 2024</div>
+      </div>
+
+      <div class="events">
+        <!--<div class="event">
+          <div class="title">
+            <i class="fas fa-circle"></i>
+            <h3 class="event-title">Задача 1</h3>
+          </div>
+
+          <div class="event-time">10:00 - 13:15</div>
+        </div>-->
+      </div>
+    </div>
   </div>
 
   <div class="main-img"></div>
