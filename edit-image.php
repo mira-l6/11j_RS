@@ -21,8 +21,8 @@
             <h2 class="text-center">Редактиране на снимка</h2>
             <div id="preview" class="image-display">
 
-            </div>
-            <form id="edit-image-form" action="" method="post">
+            </div><!--
+            <form id="edit-image-form" action="image-action.php" method="post">
                 <div class="form-floating mb-3 mt-3">
                     <input type="file" class="form-control" id="profile-image" name="profile-image"
                     onchange="getImagePreview()">
@@ -30,6 +30,17 @@
                 </div>
                 <input type="submit" value="Запазване">
             </form>
+-->
+            
+            <form action="image-action.php" method="post" enctype="multipart/form-data" id="form">
+                <input type="file" id="image-upload-multiple" name="images[]" multiple onchange="getImagePreview()">
+                <label for="image-upload-multiple">Снимка</label>
+
+                <input type="submit" value="Запазване">
+                <!--<button type="submit" class="add-ph-button">Запазване</button>-->
+                        
+            </form>
+
         </div>
     </main>
     <script src="js/visualizeImage.js"></script>
