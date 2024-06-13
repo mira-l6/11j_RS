@@ -157,3 +157,26 @@ input[type="submit"]{
     margin-bottom: 0;
     margin-top: 0.5em;
 }
+
+
+.all-categories-display{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    background-color: rgb(220, 220, 220);
+    padding: 1em;
+    margin: 0.5em;
+    gap: 0.2em;
+    border-radius: 5px;
+    height: 13em;
+    overflow-y: scroll;
+}
+
+.category{
+    background-color: white;
+    border-radius: 5px;
+    padding: 0.5em 1em 0.5em 1em;
+}
+.category h6{
+    margin-bottom: 0 !important;
+}

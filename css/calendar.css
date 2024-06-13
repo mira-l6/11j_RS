@@ -1,4 +1,19 @@
-.calendar-container {
+.navbar{
+    font-family: main-font;
+}
+
+.navbar a:nth-child(3){
+    background-color: rgb(246, 146, 162);
+    color: black;
+    opacity: 0.6;
+    padding: 0.5em;
+}
+.navbar a:nth-child(3):hover{
+    border:  none;
+}
+
+
+/* .calendar-container {
     margin: 50px auto;
     width: 90%;
     max-width: 600px;
@@ -38,13 +53,4 @@
 }
 .calendar-table td {
     height: 100px;
-}
-.navbar a:nth-child(3){
-    background-color: rgb(246, 146, 162);
-    color: black;
-    opacity: 0.6;
-    padding: 0.5em;
-}
-.navbar a:nth-child(3):hover{
-    border:  none;
-}
+} */

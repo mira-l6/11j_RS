@@ -169,6 +169,30 @@ include "db_connection.php";
             <div class="categories-space">
                 <div class="all-categories">
                     <h5 class="text-center p-3">Всички категории</h5>
+                    <div class="all-categories-display">
+                        <div class="category">
+                            <h6>Работа</h6>
+                        </div>
+                        <div class="category">
+                            <h6>Училище</h6>
+                        </div>
+                        <div class="category">
+                            <h6>Домашни задължения</h6>
+                        </div>
+                        <div class="category">
+                            <h6>Домашни </h6>
+                        </div>
+                        <div class="category">
+                            <h6>Пазар</h6>
+                        </div>
+                        <div class="category">
+                            <h6>Домашни задължения</h6>
+                        </div>
+                        <div class="category">
+                            <h6>Домашни неща</h6>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="add-category-box">
                     <h5 class="text-center p-3">Добавяне на категория</h5>
