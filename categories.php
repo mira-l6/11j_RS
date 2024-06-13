@@ -39,6 +39,100 @@ include "main_background.php";
                                     <p>До <span>06/06/2024</span></p>
                                 </div>
                             </div>
+
+                            <?php
+                    $sqltasks = "SELECT * FROM `task` WHERE `task_CategorID`=1";
+                    $resulttasks = mysqli_query($con, $sqluser);
+                
+                //nqkolko reda
+                $taskscount = mysqli_num_rows($resulttasks);
+                $tasks = array();
+                while ($rowtask = mysqli_fetch_assoc($resulttasks)) 
+                {
+                        $tasks[] = $rowtask;
+                }
+
+                for($i = 0; $i < $taskscount; $i++)
+                {
+                    $task = $tasks[$i];
+                    
+                    //info
+                    $userid = $user['user_ID'];
+                    $name = $user['user_FirstName'];
+                    $lastname = $user['user_LastName'];
+                    $birthday = $user['user_Birthday'];
+                    $email = $user['user_Email'];
+                    $phone = $user['user_Phone'];
+                    $color = $user['user_Color'];
+                    $imageid = $user['user_ImageID'];
+
+                    //snimka
+                    if($imageid != null)
+                    {
+                        $sqlimg = "SELECT * FROM `image` WHERE `image_ID`='$imageid'";
+                        $resultimg = mysqli_query($con, $sqlimg);
+                        if($resultimg)
+                        {
+                            $rowimg = mysqli_fetch_assoc($resultimg);
+                            $userimgurl = $rowimg['image_URL'];
+                        }
+                        else
+                        {
+                            echo "neshto se oburka sus snimkata";
+                        }
+                    }
+                    else
+                    {
+                        $userimgurl = "img/profile_icon.jpg";
+                    }
+
+                    //nai-nalezhashta zadacha
+                    $sqltask = "SELECT * FROM `user_task` WHERE `user_ID`='$userid' ORDER BY `task_ID` DESC LIMIT 1";
+                    $resulttask = mysqli_query($con, $sqltask);
+                    if(mysqli_num_rows($resulttask) === 1)
+                    {
+                        $rowtask = mysqli_fetch_assoc($resulttask);
+                        $taskid = $rowtask['task_ID'];
+                        
+                        $sqlgettask = "SELECT * FROM `task` WHERE `task_ID`='$taskid'";
+                        $resultgettask = mysqli_query($con, $sqlgettask);
+                        if($resultgettask)
+                        {
+                            $rowgettask = mysqli_fetch_assoc($resultgettask);
+                            $taskname = $rowgettask['task_Task'];
+                        }
+                    }
+                    else
+                    {
+                        $taskname = "Няма задачи";
+                    }
+
+                    echo '<div class="user">';
+                    echo '  <div class="user-info">';
+                    echo '    <div class="user-image-container">';
+                    echo '        <img src="'.$userimgurl.'" alt="">';
+                    echo '    </div>';
+                    echo '    <div class="user-subinfo">';
+                    echo '        <h6>'.$name.' '.$lastname.'</h6>';
+                    echo '        <p>'.$birthday.'</p>';
+                    echo '          <h6>'.$email.'</h6>';
+                    echo '          <p>'.$phone.'</p>';
+                    echo '          </div>';
+                    echo '          </div>';
+                    echo '        <div class="user-more">';
+                    echo '    <div class="user-color">';
+                    echo '  <div style="background-color: '.$color.';"></div>';
+                    echo '      </div>';
+                    echo '  <div class="user-last-task">';
+                    echo '    <div class="task-inner d-flex flex-row align-items-center">';
+                    echo '  <span><i class="material-icons">check</i></span>';
+                    echo '<h6>'.$taskname.'</h6>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }?>
+
                             <div class="task">
                                 <div class="task-inner d-flex flex-row">
                                     <span><i class="material-icons">check</i></span>
