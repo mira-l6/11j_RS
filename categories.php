@@ -150,10 +150,9 @@ include "main_background.php";
                 </div>
                 <div class="add-category-box">
                     <h5 class="text-center p-3">Добавяне на категория</h5>
-                    <form action="" method="post" class="ps-5 pe-5 pb-5 pt-3">
+                    <form id="add-cat" action="add-category.php" method="post" class="ps-5 pe-5 pb-5 pt-3">
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="category-name" placeholder="Въведете име"
-                                name="category-name">
+                            <input type="text" class="form-control" id="category-name" placeholder="Въведете име" name="category-name">
                             <label for="category-name">Име на категория</label>
                             <input type="submit" value="Добавяне">
                         </div>
