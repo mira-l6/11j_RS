@@ -24,146 +24,74 @@ include "db_connection.php";
             <div class="all-tasks">
                 <h4 class="text-center p-4">Задачи по категории</h4>
                 <div class="all-tasks-display">
-                    <div class="category-container">
-                        <h5>Работа</h5>
-                        <div class="category-tasks d-flex flex-column ">
-                            <div class="task">
-                                <div class="task-inner d-flex flex-row">
-                                    <span><i class="material-icons">check</i></span>
-                                    <h6>Изхвърли боклука</h6>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightblue"></span>
-                                    <span class="task-category">Работа</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <p>До <span>06/06/2024</span></p>
-                                </div>
-                            </div>
-
-                            <?php
-                    $sqltasks = "SELECT * FROM `task` WHERE `task_CategoryID`=1";
-                    $resulttasks = mysqli_query($con, $sqltasks);
                 
-                //nqkolko reda
-                $taskscount = mysqli_num_rows($resulttasks);
-                $tasks = array();
-                while ($rowtask = mysqli_fetch_assoc($resulttasks)) 
-                {
-                        $tasks[] = $rowtask;
-                }
+                <?php
+                //cat container
+                    $sqlcat = "SELECT * FROM `category`";
+                    $resultcat = mysqli_query($con, $sqlcat);
+                    $catcount = mysqli_num_rows($resultcat);
+                    $cats = array();
 
-                for($i = 0; $i < $taskscount; $i++)
-                {
-                    $task = $tasks[$i];
+                    while ($rowcat = mysqli_fetch_assoc($resultcat)) 
+                    {
+                        $cats[] = $rowcat;
+                    }
+
+                    for ($j = 0; $j < $catcount; $j++)
+                    {
+                        $cat = $cats[$j];
+                        $categoryname = $cat['category_Name'];
+                        $categoryid = $cat['category_ID'];
+                        echo '<div class="category-container">';
+                        echo '    <h5>'.$categoryname.'</h5>';
+                        echo '    <div class="category-tasks d-flex flex-column ">';
+
+                        //задачите
+                        $sqltasks = "SELECT * FROM `task` WHERE `task_CategoryID`='$categoryid'";
+                        $resulttasks = mysqli_query($con, $sqltasks);
+
+                        //nqkolko reda
+                        $taskscount = mysqli_num_rows($resulttasks);
+                        $tasks = array();
+                        while ($rowtask = mysqli_fetch_assoc($resulttasks))
+                        {
+                            $tasks[] = $rowtask;
+                        }
+
+                        for ($i = 0; $i < $taskscount; $i++)
+                        {
+                            $task = $tasks[$i];
+
+                            //info
+                            $taskid = $task['task_ID'];
+                            $tasktask = $task['task_Task'];
+                            $description = $task['task_Description'];
+                            $color = $task['task_Color'];
+                            $starttime = $task['task_StartTime'];
+                            $duetime = $task['task_DueTime'];
+                            $status = $task['task_Status'];
+                            $categoryid = $task['task_CategoryID'];
+
+                            echo '<div class="task">';
+                            echo '  <div class="task-inner d-flex flex-row">';
+                            echo '    <span><i class="material-icons">check</i></span>';
+                            echo '        <h6>'.$tasktask.'</h6>';
+                            echo '    </div>';
+                            echo '    <div class="task-color-category">';
+                            echo '        <span class="task-color" style="background-color: '.$color.'"></span>';
+                            echo '        <span class="task-category">'.$categoryname.'</span>';
+                            echo '          </div>';
+                            echo '          <div class="task-due-date">';
+                            echo '          <p>До <span>'.$duetime.'</span></p>';
+                            echo '          </div>';
+                            echo '        </div>';
+                        }
+
+                        echo '        </div>';
+                        echo '    </div>';
+                    }
+                ?>
                     
-                    //info
-                    $taskid = $task['task_ID'];
-                    $tasktask = $task['task_Task'];
-                    $description = $task['task_Description'];
-                    $color = $task['task_Color'];
-                    $starttime = $task['task_StartTime'];
-                    $duetime = $task['task_DueTime'];
-                    $status = $task['task_Status'];
-                    $categoryid = $task['task_CategoryID'];
-
-                    echo '<div class="task">';
-                    echo '  <div class="task-inner d-flex flex-row">';
-                    echo '    <span><i class="material-icons">check</i></span>';
-                    echo '        <h6>'.$tasktask.'</h6>';
-                    echo '    </div>';
-                    echo '    <div class="task-color-category">';
-                    echo '        <span class="task-color" style="background-color: '.$color.'"></span>';
-                    echo '        <span class="task-category">Работа</span>';
-                    echo '          </div>';
-                    echo '          <div class="task-due-date">';
-                    echo '          <p>До <span>'.$duetime.'</span></p>';
-                    echo '          </div>';
-                    echo '        </div>';
-                }?>
-
-                            
-                            
-                            
-                        </div>
-                    </div>
-                    <div class="category-container">
-                        <h5>Училище</h5>
-                        <div class="category-tasks d-flex flex-column ">
-
-                            <?php
-                    $sqltasks = "SELECT * FROM `task` WHERE `task_CategoryID`=3";
-                    $resulttasks = mysqli_query($con, $sqltasks);
-                
-                //nqkolko reda
-                $taskscount = mysqli_num_rows($resulttasks);
-                $tasks = array();
-                while ($rowtask = mysqli_fetch_assoc($resulttasks)) 
-                {
-                        $tasks[] = $rowtask;
-                }
-
-                for($i = 0; $i < $taskscount; $i++)
-                {
-                    $task = $tasks[$i];
-                    
-                    //info
-                    $taskid = $task['task_ID'];
-                    $tasktask = $task['task_Task'];
-                    $description = $task['task_Description'];
-                    $color = $task['task_Color'];
-                    $starttime = $task['task_StartTime'];
-                    $duetime = $task['task_DueTime'];
-                    $status = $task['task_Status'];
-                    $categoryid = $task['task_CategoryID'];
-
-                    echo '<div class="task">';
-                    echo '  <div class="task-inner d-flex flex-row">';
-                    echo '    <span><i class="material-icons">check</i></span>';
-                    echo '        <h6>'.$tasktask.'</h6>';
-                    echo '    </div>';
-                    echo '    <div class="task-color-category">';
-                    echo '        <span class="task-color" style="background-color: '.$color.'"></span>';
-                    echo '        <span class="task-category">Училище</span>';
-                    echo '          </div>';
-                    echo '          <div class="task-due-date">';
-                    echo '          <p>До <span>'.$duetime.'</span></p>';
-                    echo '          </div>';
-                    echo '        </div>';
-                }?>
-                        </div>
-                    </div>
-                    <div class="category-container">
-                        <h5>Домашни задължения</h5>
-                        <div class="category-tasks d-flex flex-column ">
-                            <div class="task">
-                                <div class="task-inner d-flex flex-row">
-                                    <span><i class="material-icons">check</i></span>
-                                    <h6>Изхвърли боклука</h6>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightblue"></span>
-                                    <span class="task-category">Работа</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <p>До <span>06/06/2024</span></p>
-                                </div>
-                            </div>
-                            <div class="task">
-                                <div class="task-inner d-flex flex-row">
-                                    <span><i class="material-icons">check</i></span>
-                                    <h6>Изхвърли боклука</h6>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightblue"></span>
-                                    <span class="task-category">Работа</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <p>До <span>06/06/2024</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="categories-space">
