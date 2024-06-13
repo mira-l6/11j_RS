@@ -189,14 +189,14 @@ else
                 <label for="description">Описание</label>
             </div>
 
-            <div class="status-area mb-3">
+            <!-- <div class="status-area mb-3">
                 <select name="status" id="status" class="form-select p-3">
                     <option value="">Статус</option>
                     <option value="Незавършена">Незавършена</option>
                     <option value="Започната">Започната</option>
                     <option value="Завършена">Завършена</option>
                 </select>
-            </div>
+            </div> -->
 
             <div class="category-area mb-3">
                 <select name="category" id="category" class="form-select p-3">

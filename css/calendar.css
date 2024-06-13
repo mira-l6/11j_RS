@@ -1,6 +1,11 @@
+/* @font-face {
+    font-family: main-font;
+    src: url(../fonts/NunitoSans_7pt_Condensed-Light.ttf);
+  }
+
 .navbar{
     font-family: main-font;
-}
+} */
 
 .navbar a:nth-child(3){
     background-color: rgb(246, 146, 162);
