@@ -25,7 +25,6 @@
                     <h4>Потребители</h4>
                 </div>
                 <div class="users-display">
-<!---->
                     <div class="user">
                         <div class="user-info">
                             <div class="user-image-container">
@@ -166,7 +165,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             <div class="groups">
@@ -178,12 +176,15 @@
                         <div class="group-info">
                             <div class="group-image-container">
                                 <img src="img/kati.png" alt="">
+                                <span class="group-first-letter">К</span>
                             </div>
                             <div class="group-image-container">
                                 <img src="img/miri.png" alt="">
+                                <span class="group-first-letter">М</span>
                             </div>
                             <div class="group-image-container">
                                 <img src="img/zazi.png" alt="">
+                                <span class="group-first-letter">Р</span>
                             </div>
                         </div>
                     </div>
