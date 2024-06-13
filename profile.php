@@ -176,7 +176,7 @@ else
     <!-- <div class="main-img"></div> -->
     <div class="popup" id="taskPopup">
         <h4 class="text-center mt-2 p-3">Добавяне на задача</h4>
-        <form action="" method="post" class="ps-5 pe-5">
+        <form action="add-task.php" method="post" class="ps-5 pe-5">
 
             <div class="form-floating mb-3 mt-3">
                 <input type="text" class="form-control" id="task" placeholder="Въведете задача" name="task">
@@ -217,7 +217,7 @@ else
             </div>
 
             <div class="color-area">
-                <select name="colour" id="colour" class="form-select p-3">
+                <select name="colour" id="color" class="form-select p-3">
                     <option value="">Цвят</option>
                     <option value="red">Червено</option>
                     <option value="orange">Оранжево</option>
