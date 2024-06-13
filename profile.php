@@ -5,7 +5,7 @@ include "db_connection.php";
 include "main_background.php";
 
 //vzimane na infoto ot bd
-$userid = 2;
+$userid = $_SESSION['login_UserID'];
 
 $sqluser = "SELECT * FROM `user` WHERE `user_ID`='$userid'";
 $resultuser = mysqli_query($con, $sqluser);
@@ -19,6 +19,26 @@ if($resultuser)
     $phone = $rowuser['user_Phone'];
     $email = $rowuser['user_Email'];
     $colour = $rowuser['user_Color'];
+    
+    if($rowuser['user_ImageID'])
+    {
+        $imgid = $rowuser['user_ImageID'];
+        $sqlimg = "SELECT * FROM `image` WHERE `image_ID`='$imgid'";
+        $resultimg = mysqli_query($con, $sqlimg);
+        if($resultimg)
+        {
+            $rowimg = mysqli_fetch_assoc($resultimg);
+            $imgurl = $rowimg['image_URL'];
+        }
+        else
+        {
+            echo "ne moja da bude izbrana sn ot bd";
+        }
+    }
+    else
+    {
+        $imgurl = "img/profile_icon.jpg";
+    }
 }
 else
 {
@@ -46,7 +66,10 @@ else
         <div class="profile-box">
             <div class="profile-info">
                 <div class="profile-image">
-                    <img src="img/profile_icon.jpg" alt="">
+                    <?php
+                    echo '<img src="'.$imgurl.'" alt="">';
+                    ?>
+                    <!--<img src="img/profile_icon.jpg" alt="">-->
                     <button class="profile-edit-image-button"><a href="edit-image.php"><i class="material-icons">edit</i></a></button>
                 </div>
                 <div class="profile-subinfo">
