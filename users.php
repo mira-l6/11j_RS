@@ -2,7 +2,7 @@
     session_start();
     include 'menu.php';
     include 'db_connection.php';
-    // include "main_background.php";
+    //include "main_background.php";
 ?>
 
 <!DOCTYPE html>
