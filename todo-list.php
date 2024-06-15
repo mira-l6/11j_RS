@@ -14,7 +14,7 @@ session_start();
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  -->
   <link rel="stylesheet" href="css/todo-list.css">
-  <link rel="stylesheet" href="css/profile.css">
+  <!-- <link rel="stylesheet" href="css/profile.css"> -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- <link rel="stylesheet" href="css/main_background_scroll.css"> -->
   <title>Списък със задачи</title>
@@ -35,8 +35,8 @@ session_start();
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <!-- <td>Изхвърли боклука</td>
+          <!-- <tr>
+            <td>Изхвърли боклука</td>
             <td>Трябва да изхвърля малкия</td>
             <td>john@example.com</td>
             <td>2005/05/05</td>
@@ -78,15 +78,25 @@ session_start();
                     }
 
                     if($task['task_Status'] == 0){
-                      echo '<tr>';
+                      echo '<tr id="'.$task['task_ID'].'">';
                       echo '  <td>'.$task['task_Task'].'</td>';
                       echo '  <td>'.$task['task_Description'].'</td>';
                       echo '  <td>'.$category['category_Name'].'</td>';
                       echo '  <td>'.$task['task_StartTime'].'</td>';
                       echo '  <td>'.$task['task_DueTime'].'</td>';
-                      echo '  <td class="delete-task-button"><button><i class="material-icons">delete</i></button></td>';
+                      echo '  <td><button id="delTaskBtn" data-val='.$task['task_ID'].' class="delete-task-button"><i class="material-icons">delete</i></button></td>';
                       echo '</tr>';
                     }
+
+                    // if(isset($_POST[''.$task['task_ID'].''])){
+                    //   $sqldelete_task = "DELETE FROM `task` WHERE `task_ID` = ".$_POST[''.$task['task_ID'].''];
+                    //   $resultdeltask = mysqli_query($con, $sqldelete_task);
+                    //   if($resultdeltask){
+                    //     echo "uspesjo premahna zadacha";
+                    //   }else{
+                    //     header("Location: todo-list.php?ne moja da se premahne");
+                    //   }
+                    // }
                   }
                 }
               }
@@ -98,6 +108,7 @@ session_start();
         </tbody>
       </table>
     </div>
+
     <div class="add-task-box">
       <h4 class="text-center mt-2 p-3">Добавяне на задача</h4>
       <form action="add-task.php" method="post">
@@ -112,12 +123,12 @@ session_start();
 
         <div class="date">
           <label for="start-date" class="form-control">Начална дата (YYYY-MM-DD)</label>
-          <input id="start-date" name="start-date" type="string" class="form-control" pattern="\d{4}-\d{2}-\d{2}"
+          <input id="start-date" name="start-date" type="date" class="form-control" 
             placeholder="YYYY-mm-dd">
         </div>
         <div class="date">
           <label for="due-date" class="form-control">Краен срок (YYYY-MM-DD)</label>
-          <input id="due-date" name="due-date" type="string" class="form-control" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-mm-dd">
+          <input id="due-date" name="due-date" type="date" class="form-control" placeholder="YYYY-mm-dd">
         </div>
 
         <div class="category-area mb-3">
@@ -150,10 +161,10 @@ session_start();
             <option value="червено">Червено</option>
             <option value="оранжево">Оранжево</option>
             <option value="жълто">Жълто</option>
-            <option value="светлозелено">Светлозелено</option>
-            <option value="тъмнозелено">Тъмнозелено</option>
-            <option value="светлосиньо">Светлосиньо</option>
-            <option value="тъмносиньо">Тъмносиньо</option>
+            <option value="сзелено">Светлозелено</option>
+            <option value="тзелено">Тъмнозелено</option>
+            <option value="свсиньо">Светлосиньо</option>
+            <option value="тсиньо">Тъмносиньо</option>
             <option value="лилаво">Лилаво</option>
             <option value="розово">Розово</option>
           </select>
@@ -166,6 +177,22 @@ session_start();
       </form>
     </div>
   </main>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="js/todo-listDeleteTask.js"></script>
+
+  <?php
+    if($_POST['action'] == "dltRecord"){
+      $id = $_POST['id'];
+      $sqldelete_task = "DELETE FROM `task` WHERE `task_ID` = '$id'";
+      $resultdlt_task = mysqli_query($con, $sqldelete_task);
+      if($resultdlt_task){
+        header("Location: todo-list.php?Maj uspeshno se pramhna molq te");
+      }else{
+        header("Location: todo-list.php?ne raboti premajvaneto");
+      }
+    }
+  ?> -->
 </body>
 
 </html>
