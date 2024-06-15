@@ -2,10 +2,9 @@
    session_start();
    include "db_connection.php"; 
 
-   if(isset($_POST['task']) && isset($_POST['status'])){
+   if(isset($_POST['task'])){
 
         $task = trim($_POST['task']);
-        $status = trim($_POST['status']);
 
         if(isset($_POST['description'])){
             $description = trim($_POST['description']);
@@ -44,8 +43,8 @@
         }
 
         
-        $sqlnewtask = "INSERT INTO `task`(`task_Task`, `task_Description`, `task_Color`, `task_StartTime`, `task_DueDate`, `task_Status`, `task_CategoryID`)
-        VALUES ('$task', '$description','$color', '$start_date', '$due_date', '$status', '1')";
+        $sqlnewtask = "INSERT INTO `task`(`task_Task`, `task_Description`, `task_Color`, `task_StartTime`, `task_DueTime`, `task_Status`, `task_CategoryID`)
+        VALUES ('$task', '$description', '$color', '$start_date', '$due_date', '0', '1')";
         $resultnewtask = mysqli_query($con, $sqlnewtask);
 
         if($resultnewtask){

@@ -60,6 +60,28 @@ main{
     margin-right: 1em;
 }
 
+.add-task-box form{
+    margin: 1.5em;
+    margin-top: 0 !important;
+}
+.add-task-box select, input, label{
+    width: 100% !important;
+    border: none !important;
+}
+.add-task-box label{
+    border-bottom: 1px solid rgb(214, 212, 212) !important;
+}
+.add-task-box select{
+    padding: 0.5em !important;
+}
+.add-task-box input{
+    padding: 1em;
+}
+
+.date{
+    margin-bottom: 1em !important;
+}
+
 .table-head{
     background-color: pink;
 }
