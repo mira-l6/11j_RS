@@ -1,11 +1,29 @@
 <?php
     include "menu.php";
     include "main_background.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="bg">
 
 <head>
+    <?php
+        if(!isset($_SESSION['login_UserID'])){
+            echo '<style>';
+            echo '  .navbar a:nth-child(2){';
+            echo '      display: none }';
+            echo '  .navbar a:nth-child(3){';
+            echo '      display: none }';
+            echo '  .navbar a:nth-child(4){';
+            echo '      display: none }';
+            echo '  .navbar a:nth-child(5){';
+            echo '      display: none }';
+            echo '</style';
+        }else{
+            echo 'SUPER';
+        }
+    ?>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
