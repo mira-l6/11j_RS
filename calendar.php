@@ -1,7 +1,4 @@
-<?php
-    include "menu.php";
-    // include "main_background.php";
-?>
+
 <!DOCTYPE html>
 <html lang="bg">
 
@@ -11,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Списък със задачи</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
     <link rel="stylesheet" href="css/eventCal.css">
-    <link rel="stylesheet" href="css/calendar.css">
 </head>
 
 <body>
@@ -90,14 +85,14 @@
       </div>
 
       <div class="events">
-        <!--<div class="event">
+        <div class="event">
           <div class="title">
             <i class="fas fa-circle"></i>
             <h3 class="event-title">Задача 1</h3>
           </div>
 
           <div class="event-time">10:00 - 13:15</div>
-        </div>-->
+        </div>
       </div>
     </div>
   </div>
