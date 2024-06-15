@@ -31,7 +31,7 @@ const months =
 ];
 
 //zadachi po podrazbirane
-const eventsArr =
+/*const eventsArr =
 [
     {
         day: 16,
@@ -65,8 +65,68 @@ const eventsArr =
             },
         ]
     }
-]
+]*/
 
+let eventsArr = [];
+
+fetch('fetch-tasks.php')
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                const eventDate = new Date(data[i].task_DueDate);
+                eventsArr.push({
+                    day: eventDate.getDate(),
+                    month: eventDate.getMonth() + 1,
+                    year: eventDate.getFullYear(),
+                    title: data[i].task_Task
+                });
+            }
+            initCalendar(eventsArr);
+        })
+        .catch(error => console.error('Error fetching events:', error));
+/*let fetchedTasks = [
+    { task_Task: "Task 1", task_DueDate: "2024-06-13" },
+    { task_Task: "Task 2", task_DueDate: "2024-06-14" },
+    { task_Task: "Task 3", task_DueDate: "2024-06-15" }
+];
+
+// Add each task to the tasks array using a for loop
+for (let i = 0; i < fetchedTasks.length; i++) {
+    tasks.push(fetchedTasks[i]);
+}
+
+console.log(tasks);
+
+
+fetch('fetch-tasks.php')
+    .then(response => response.json())
+    .then(data => 
+        {
+            eventsArr = data.map(event =>
+                {
+                    const eventDate = new Date(event.task_DueDate);
+                    return
+                    {
+                        day: 22,
+                        month: 6,
+                        year: 2024,
+                        events:
+                        [
+                            {
+                                title: "Изхвърли боклука 2",
+                                time: "10:00 AM"
+            },
+            {
+                title: "Напиши си домашната we",
+                time: "10:00 AM"
+            },
+        ]
+                    };
+                }
+            );
+            initCalendar(eventsArr);
+        }
+    );*/
 
 //dobavqne na dni
 function initCalendar()
