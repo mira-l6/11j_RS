@@ -22,6 +22,7 @@ main{
     width: 90%;
     margin-top: 3em;
     display: flex;
+    border-radius: 5px;
     flex-direction: row;
     background-color: #e6e6e6;
     /* opacity: 0.9; */
