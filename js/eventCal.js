@@ -27,7 +27,26 @@ const months =
     "Декември",
 ];
 
-//zadachi
+//zadachi po podrazbirane
+const eventsArr =
+[
+    {
+        day: 16,
+        month: 6,
+        year: 2024,
+        events:
+        [
+            {
+                title: "Изхвърли боклука",
+                time: "10:00 AM"
+            },
+            {
+                title: "Напиши си домашната",
+                time: "10:00 AM"
+            },
+        ]
+    }
+]
 
 
 //dobavqne na dni
@@ -56,15 +75,40 @@ function initCalendar()
     //dnite na segashniq mesec
     for(let i = 1; i <= lastDate; i++)
     {
+        //проверка дали има задача на днешния ден
+        let event = false;
+        eventsArr.forEach((eventObj) => 
+        {
+            if(eventObj.day === i && eventObj.month === month + 1 && eventObj.year === year)
+            {
+                event = true;
+            }
+        });
+
         //dobavqne na klas today ako denqt e dnes
         if(i === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth())
         {
-            days += `<div class="day today">${i}</div>`;
+            //ако има задача, да се добави клас event
+            if(event)
+            {
+                days += `<div class="day today event">${i}</div>`;
+            }
+            else 
+            {
+                days += `<div class="day today">${i}</div>`;
+            }
         }
         else
         {
-            //добавяне на останалите dni
-            days += `<div class="day">${i}</div>`;
+            //добавяне на останалите dni sled proverka
+            if(event)
+                {
+                    days += `<div class="day event">${i}</div>`;
+                }
+                else 
+                {
+                    days += `<div class="day">${i}</div>`;
+                }
         }
 
     }
@@ -76,6 +120,8 @@ function initCalendar()
     }
 
     daysContainer.innerHTML = days;
+    //dobavqne na listener sled inicializaciq na kalendara
+    addListener();
 }
 
 initCalendar();
@@ -159,4 +205,68 @@ function gotoDate()
             return;
         }
     }
+}
+
+//dobavqne na funkciq za event listener za rendered dnite
+function addListener()
+{
+    const days = document.querySelectorAll(".day");
+    days.forEach((day) => 
+    {
+        day.addEventListener("click", (e) =>
+        {
+            //tekushtiqt den e aktiven
+            activeDay = Number(e.target.innerHTML);
+
+            //premahvane na active ot veche aktiven den
+            days.forEach((day) =>
+            {
+                day.classList.remove("active");
+            });
+
+            //pri natiskane na den ot predishniq mesec
+            if(e.target.classList.contains("prev-date"))
+            {
+                prevMonth();
+                setTimeout(() => 
+                {
+                    //izbirane na vsichki dni
+                    const days = document.querySelectorAll(".day");
+
+                    //sled otivaneto na den toi stava active
+                    days.forEach((day) => 
+                    {
+                        if(!day.classList.contains("prev-date") && day.innerHTML === e.target.innerHTML)
+                        {
+                            day.classList.add("active");
+                        }
+                    });
+                }, 100);
+            }
+            //sledvasht mesec
+            else if(e.target.classList.contains("next-date"))
+            {
+                nextMonth();
+                setTimeout(() => 
+                {
+                    //izbirane na vsichki dni
+                    const days = document.querySelectorAll(".day");
+
+                    //sled otivaneto na den toi stava active
+                    days.forEach((day) => 
+                    {
+                        if(!day.classList.contains("next-date") && day.innerHTML === e.target.innerHTML)
+                        {
+                            day.classList.add("active");
+                        }
+                    });
+                }, 100);
+            }
+            else
+            {
+                //ostanalite dni ot meseca
+                e.target.classList.add("active");
+            }
+        });
+    });
 }

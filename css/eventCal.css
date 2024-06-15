@@ -391,7 +391,7 @@ body
    pointer-events: none;
 }
 
-.event::after
+.events .event::after
 {
    content: "✔";
    position: absolute;
@@ -405,7 +405,7 @@ body
    transform: rotateY(-50%);
 }
 
-.event:hover::after
+.events .event:hover::after
 {
    display: flex;
 }
