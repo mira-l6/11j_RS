@@ -12,11 +12,7 @@
     $host="localhost";
     $port=3306;
     $user="root";
-<<<<<<< HEAD
     $password=""; 
-=======
-    $password="lutenica123";
->>>>>>> 7ac9164a8b5ac49a6294040ccfa17b80a209e26f
     $dbname="tododb";
 
     $con = new mysqli($host, $user, $password, $dbname, $port)
