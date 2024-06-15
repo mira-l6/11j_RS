@@ -89,13 +89,14 @@ function initCalendar()
         if(i === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth())
         {
             //ако има задача, да се добави клас event
+            //dobavqne na active na today v nachaloto
             if(event)
             {
-                days += `<div class="day today event">${i}</div>`;
+                days += `<div class="day today active event">${i}</div>`;
             }
             else 
             {
-                days += `<div class="day today">${i}</div>`;
+                days += `<div class="day today active">${i}</div>`;
             }
         }
         else
@@ -270,3 +271,5 @@ function addListener()
         });
     });
 }
+
+//pokazvane na subitiqta na aktivniq den i datata gore vdqsno
