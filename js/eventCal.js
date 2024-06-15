@@ -4,7 +4,9 @@ const calendar = document.querySelector(".calendar"),
     prev = document.querySelector(".prev");
 next = document.querySelector(".next"),
 todayBtn = document.querySelector(".today-btn"),
-dateInput = document.querySelector(".date-input");
+dateInput = document.querySelector(".date-input"),
+    eventDay = document.querySelector(".event-day"),
+ eventDate = document.querySelector(".event-date");
 
 let today = new Date();
 let activeDay;
@@ -219,6 +221,9 @@ function addListener()
             //tekushtiqt den e aktiven
             activeDay = Number(e.target.innerHTML);
 
+            //izvikvane na aktiven den sled clickvane
+            getActiveDay(e.target.innerHTML);
+
             //premahvane na active ot veche aktiven den
             days.forEach((day) =>
             {
@@ -273,3 +278,10 @@ function addListener()
 }
 
 //pokazvane na subitiqta na aktivniq den i datata gore vdqsno
+function getActiveDay(date)
+{
+    const day = new Date(year, month, date);
+    const dayName = day.toString().split(" ")[0];
+    eventDay.innerHTML = dayName;
+    eventDate.innerHTML = date + " " + months[month] + " " + year;
+}
