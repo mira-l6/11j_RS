@@ -1,12 +1,13 @@
 const calendar = document.querySelector(".calendar"),
     date = document.querySelector(".date"),
     daysContainer = document.querySelector(".days"),
-    prev = document.querySelector(".prev");
+    prev = document.querySelector(".prev"),
 next = document.querySelector(".next"),
 todayBtn = document.querySelector(".today-btn"),
 dateInput = document.querySelector(".date-input"),
     eventDay = document.querySelector(".event-day"),
- eventDate = document.querySelector(".event-date");
+ eventDate = document.querySelector(".event-date"),
+ eventsContainer = document.querySelector(".events");
 
 let today = new Date();
 let activeDay;
@@ -44,6 +45,22 @@ const eventsArr =
             },
             {
                 title: "Напиши си домашната",
+                time: "10:00 AM"
+            },
+        ]
+    },
+    {
+        day: 22,
+        month: 6,
+        year: 2024,
+        events:
+        [
+            {
+                title: "Изхвърли боклука 2",
+                time: "10:00 AM"
+            },
+            {
+                title: "Напиши си домашната we",
                 time: "10:00 AM"
             },
         ]
@@ -90,6 +107,10 @@ function initCalendar()
         //dobavqne na klas today ako denqt e dnes
         if(i === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth())
         {
+            activeDay = i;
+            getActiveDay(i);
+            showEvents(i);
+
             //ако има задача, да се добави клас event
             //dobavqne na active na today v nachaloto
             if(event)
@@ -223,6 +244,7 @@ function addListener()
 
             //izvikvane na aktiven den sled clickvane
             getActiveDay(e.target.innerHTML);
+            showEvents(Number(e.target.innerHTML));
 
             //premahvane na active ot veche aktiven den
             days.forEach((day) =>
@@ -284,4 +306,45 @@ function getActiveDay(date)
     const dayName = day.toString().split(" ")[0];
     eventDay.innerHTML = dayName;
     eventDate.innerHTML = date + " " + months[month] + " " + year;
+}
+
+//pokazvane na zadachite ot suotvetniq den
+//showEvents = updateEvents
+function showEvents(date)
+{
+    let events = "";
+    eventsArr.forEach((event) =>
+    {
+        //vzimane na zadachite samo ot aktivniq den
+        if(date === event.day && month + 1 === event.month && year === event.year)
+        {
+            //pokazvane na zadachata
+            event.events.forEach((event) =>
+            {
+                events += `
+                    <div class="event">
+                        <div class="title">
+                            <i class="fas fa-circle"></i>
+                            <h3 class="event-title">${event.title}</h3>
+                        </div>
+                        <div class="event-time">
+                            <span class="event-time">${event.time}</span>
+                        </div>
+                    </div>
+                    `;
+            });
+        }
+    });
+
+    //ako nqma zadachi
+    if(events === "")
+    {
+        events = `
+            <div class="no-event">
+                <h3>Няма задачи</h3>
+            </div>`;
+    }
+
+    console.log(events);
+    eventsContainer.innerHTML = events;
 }
