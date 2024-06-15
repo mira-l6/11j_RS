@@ -36,6 +36,7 @@ include "db_connection.php";
                     {
                         $cats[] = $rowcat;
                     }
+                    $_SESSION['cats'] = $cats;
 
                     for ($j = 0; $j < $catcount; $j++)
                     {
@@ -57,7 +58,7 @@ include "db_connection.php";
                         {
                             $tasks[] = $rowtask;
                         }
-
+                        
                         for ($i = 0; $i < $taskscount; $i++)
                         {
                             $task = $tasks[$i];
@@ -101,25 +102,20 @@ include "db_connection.php";
                         <div class="category">
                             <h6>Работа</h6>
                         </div>
-                        <div class="category">
-                            <h6>Училище</h6>
-                        </div>
-                        <div class="category">
-                            <h6>Домашни задължения</h6>
-                        </div>
-                        <div class="category">
-                            <h6>Домашни </h6>
-                        </div>
-                        <div class="category">
-                            <h6>Пазар</h6>
-                        </div>
-                        <div class="category">
-                            <h6>Домашни задължения</h6>
-                        </div>
-                        <div class="category">
-                            <h6>Домашни неща</h6>
-                        </div>
+                        <?php
+                        for ($k = 0; $k < $catcount; $k++)
+                        {
+                            $cats = $_SESSION['cats'];
+                            $cat = $cats[$k];
 
+                            //info
+                            $categoryname = $cat['category_Name'];
+
+                            echo '<div class="category">';
+                            echo '  <h6>'.$categoryname.'</h6>';
+                            echo '    </div>';
+                        }
+                    ?>
                     </div>
                 </div>
                 <div class="add-category-box">
