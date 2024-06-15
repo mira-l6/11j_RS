@@ -1,6 +1,6 @@
 <?php
-include "menu.php";
-include "main_background.php";
+  include "menu.php";
+  include "main_background.php";
 ?>
 
 <!DOCTYPE html>
