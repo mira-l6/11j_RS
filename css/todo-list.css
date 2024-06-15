@@ -38,7 +38,6 @@ main{
     align-items: center;
     justify-content: center;
     gap: 1em;
-    margin-top: 2em;
 }
 
 .todo-list-box{
@@ -60,27 +59,59 @@ main{
     margin-right: 1em;
 }
 
+.add-task-box form{
+    margin: 1.5em;
+    margin-top: 0 !important;
+}
+.add-task-box select, input, label{
+    width: 100% !important;
+    border: none !important;
+}
+.add-task-box label{
+    border-bottom: 1px solid rgb(214, 212, 212) !important;
+}
+.add-task-box select{
+    padding: 0.5em !important;
+}
+.add-task-box input{
+    padding: 1em;
+}
+.add-task-box input[type="submit"]{
+    padding: 0.7em 1em 0.7em 1em !important;
+    background-color: pink;
+}
+
+.date{
+    margin-bottom: 1em !important;
+}
+
 .table-head{
     background-color: pink;
 }
 
-.delete-task-button button{
+.delete-task-button{
+    /* display: block !important; */
     border: none;
     background-color: transparent;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 2em;
     height: 2em;
     align-items: center;
-    color: rgb(99, 99, 99)
+    /* height: 72.8px !important; */
 }
 
-.delete-task-button button:hover{
-    border-radius: 50%;
-    border: 1px solid rgb(177, 176, 176);
+.delete-task-button i{
+    color: rgb(140, 140, 140) !important;
+}
+
+.delete-task-button:hover{
+    border-radius: 5px;
+    border: 1px solid rgb(216, 215, 215);
 }
 
 
-table tbody td{
+td{
     border-bottom: 1px solid rgb(244, 200, 208);
 }

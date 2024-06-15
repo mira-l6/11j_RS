@@ -208,16 +208,16 @@ else
             <div class="d-flex flex-row dates mb-3">
                 <div class="w-50 date">
                     <label for="start-date" class="form-control">Начална дата (YYYY-MM-DD)</label>
-                    <input id="start-date" type="string" class="form-control" pattern="\d{4}-\d{2}-\d{2}">
+                    <input id="start-date" name="start-date" type="string" class="form-control" pattern="\d{4}-\d{2}-\d{2}">
                 </div>
                 <div class="w-50 date">
                     <label for="due-date" class="form-control">Краен срок (YYYY-MM-DD)</label>
-                    <input id="due-date" type="string" class="form-control" pattern="\d{4}-\d{2}-\d{2}">
+                    <input id="due-date" name="due-date" type="string" class="form-control" pattern="\d{4}-\d{2}-\d{2}">
                 </div>
             </div>
 
             <div class="color-area">
-                <select name="colour" id="color" class="form-select p-3">
+                <select name="color" id="color" class="form-select p-3">
                     <option value="">Цвят</option>
                     <option value="red">Червено</option>
                     <option value="orange">Оранжево</option>

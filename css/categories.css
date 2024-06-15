@@ -82,6 +82,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
+    padding: 1em !important;
     flex-direction: row;
     /* justify-content: space-evenly; */
 }
@@ -89,7 +90,7 @@ body{
 .category-tasks{
     gap: 1em;
     padding: 1em;
-    height: 307.96px;
+    max-height: 307.96px;
     overflow-y: scroll;
 }
 
@@ -173,9 +174,28 @@ input[type="submit"]{
 }
 
 .category{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: white;
     border-radius: 5px;
+    height: 2.5em;
+    gap: 1em;
     padding: 0.5em 1em 0.5em 1em;
+}
+.delete-category{
+    display: flex;
+    align-items: center;
+    padding: 0 !important;
+    background-color: transparent;
+    border: none;
+}
+.delete-category i{
+    font-size: 1.2em;
+    color: grey;
+}
+.delete-category:hover i{
+    color: rgb(237, 166, 178);
 }
 .category h6{
     margin-bottom: 0 !important;

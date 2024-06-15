@@ -58,7 +58,11 @@ include "db_connection.php";
                         {
                             $tasks[] = $rowtask;
                         }
-                        
+                        if($taskscount === 0){
+                            echo '<div class="task">';
+                            echo '  <h6>*Няма добавени задачи в тази категория</h6>';
+                            echo '</div>';
+                        }
                         for ($i = 0; $i < $taskscount; $i++)
                         {
                             $task = $tasks[$i];
@@ -99,9 +103,9 @@ include "db_connection.php";
                 <div class="all-categories">
                     <h5 class="text-center p-3">Всички категории</h5>
                     <div class="all-categories-display">
-                        <div class="category">
+                        <!-- <div class="category">
                             <h6>Работа</h6>
-                        </div>
+                        </div> -->
                         <?php
                         for ($k = 0; $k < $catcount; $k++)
                         {
@@ -113,7 +117,8 @@ include "db_connection.php";
 
                             echo '<div class="category">';
                             echo '  <h6>'.$categoryname.'</h6>';
-                            echo '    </div>';
+                            echo '  <button class="delete-category"><i class="material-icons">delete</i></button>';
+                            echo '</div>';
                         }
                     ?>
                     </div>
