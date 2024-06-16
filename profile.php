@@ -58,6 +58,7 @@ if($resultnodue)
     $noduetask = $rownodue['task_Task'];
     $noduecolor = $rownodue['task_Color'];
     $noduecatid = $rownodue['task_CategoryID'];
+    $noduetaskid = $rownodue['task_ID'];
 
     $sqlnoduecat = "SELECT * FROM `category` WHERE `category_ID`='$noduecatid'";
     $resultnoduecat = mysqli_query($con, $sqlnoduecat);
@@ -78,7 +79,7 @@ else
 }
 
 //с краен срок
-$sqldue = "SELECT `task_Task`, `task_Color`, `task_Status`, `task_CategoryID`, DATE_FORMAT(DATE(`task_DueTime`), \"%e/%c/%Y\") AS `task_DueTime` FROM `task` WHERE `task_DueTime` IS NOT NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+$sqldue = "SELECT `task_ID`, `task_Task`, `task_Color`, `task_Status`, `task_CategoryID`, DATE_FORMAT(DATE(`task_DueTime`), \"%e/%c/%Y\") AS `task_DueTime` FROM `task` WHERE `task_DueTime` IS NOT NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
 $resultdue = mysqli_query($con, $sqldue);
 if($resultdue)
 {
@@ -89,6 +90,7 @@ if($resultdue)
     $duecolor = $rowdue['task_Color'];
     $duecatid = $rowdue['task_CategoryID'];
     $duetasktime = $rowdue['task_DueTime'];
+    $duetaskid = $rowdue['task_ID'];
 
     $sqlduecat = "SELECT * FROM `category` WHERE `category_ID`='$duecatid'";
     $resultduecat = mysqli_query($con, $sqlduecat);
@@ -120,6 +122,7 @@ if(mysqli_num_rows($resultfin) > 0)
     $fincolor = $rowfin['task_Color'];
     $fincatid = $rowfin['task_CategoryID'];
     $fintasktime = $rowfin['task_DueTime'];
+    $fintaskid = $rowfin['task_ID'];
 
     $sqlfincat = "SELECT * FROM `category` WHERE `category_ID`='$fincatid'";
     $resultfincat = mysqli_query($con, $sqlfincat);
@@ -213,9 +216,8 @@ else
                                 echo '</div>';
                                 //echo '<img src="" alt="">';
                                 echo '<p>Няма краен срок</p>';
-                                echo '<button class="delete-task-button"><i class="material-icons">delete</i></button>';
+                                echo '<button class="delete-task-button" onclick="window.location =\'remove-task.php?taskid='.htmlspecialchars($noduetaskid).'\'"><i class="material-icons">delete</i></button>';
                                 echo '</div>';
-                                
                             }
                             else
                             {
@@ -252,7 +254,7 @@ else
                                 echo '</div>';
                                 //echo '<img src="" alt="">';
                                 echo '<p>До <span>'.$duetasktime.'</span></p>';
-                                echo '<button class="delete-task-button"><i class="material-icons">delete</i></button>';
+                                echo '<button class="delete-task-button" onclick="window.location =\'remove-cat.php?id='.htmlspecialchars($duetaskid).'\'"><i class="material-icons">delete</i></button>';
                                 echo '</div>';
                                 
                             }
@@ -298,7 +300,7 @@ else
                                 {
                                     echo '<p>Няма краен срок</p>';
                                 }
-                                echo '<button class="delete-task-button"><i class="material-icons">delete</i></button>';
+                                echo '<button class="delete-task-button" onclick="window.location =\'remove-cat.php?id='.htmlspecialchars($fintaskid).'\'"><i class="material-icons">delete</i></button>';
                                 echo '</div>';
                                 
                             }
