@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "menu.php";
 include "main_background.php";
 include "db_connection.php";
@@ -114,10 +115,11 @@ include "db_connection.php";
 
                             //info
                             $categoryname = $cat['category_Name'];
+                            $catid = $cat['category_ID'];
 
                             echo '<div class="category">';
                             echo '  <h6>'.$categoryname.'</h6>';
-                            echo '  <button class="delete-category"><i class="material-icons">delete</i></button>';
+                            echo '  <button class="delete-category" onclick="window.location =\'remove-cat.php?id='.htmlspecialchars($catid).'\'"><i class="material-icons">delete</i></button>';
                             echo '</div>';
                         }
                     ?>

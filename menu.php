@@ -13,6 +13,7 @@
         <a href="calendar.php">Календар</a>
         <a href="users.php">Потребители</a>
         <a href="categories.php">Категории</a>
+        <a href="profile.php">Профил</a>
     </div>
 </head>
 
