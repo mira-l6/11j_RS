@@ -31,7 +31,7 @@ const months =
 ];
 
 //zadachi po podrazbirane
-/*const eventsArr =
+const eventsArr =
 [
     {
         day: 16,
@@ -65,9 +65,10 @@ const months =
             },
         ]
     }
-]*/
-
-let eventsArr = [];
+]
+console.log(events);
+initCalendar();
+//let eventsArr = [];
 
 fetch('fetch-tasks.php')
         .then(response => response.json())
