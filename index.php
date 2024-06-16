@@ -19,8 +19,6 @@
             echo '  .navbar a:nth-child(5){';
             echo '      display: none }';
             echo '</style';
-        }else{
-            echo 'SUPER';
         }
     ?>
     
