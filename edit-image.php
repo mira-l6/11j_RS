@@ -34,8 +34,8 @@
 -->
             
             <form action="image-action.php" method="post" enctype="multipart/form-data" id="form">
-                <input type="file" id="image-upload-multiple" name="images[]" multiple onchange="getImagePreview()">
-                <label for="image-upload-multiple">Снимка</label>
+                <input type="file" id="image-upload-multiple" name="images[]" multiple onchange="getImagePreview()" class="form-control mb-3">
+                <!-- <label for="image-upload-multiple">Снимка</label> -->
 
                 <input type="submit" value="Запазване">
                 <!--<button type="submit" class="add-ph-button">Запазване</button>-->
