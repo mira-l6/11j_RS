@@ -45,7 +45,107 @@ else
     echo ":(";
 }
 
+//взимане на последните задачи 
 
+//без краен срок
+$sqlnodue = "SELECT * FROM `task` WHERE `task_DueTime` IS NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+$resultnodue = mysqli_query($con, $sqlnodue);
+if($resultnodue)
+{
+    $isnodue = true;
+
+    $rownodue = mysqli_fetch_assoc($resultnodue);
+    $noduetask = $rownodue['task_Task'];
+    $noduecolor = $rownodue['task_Color'];
+    $noduecatid = $rownodue['task_CategoryID'];
+
+    $sqlnoduecat = "SELECT * FROM `category` WHERE `category_ID`='$noduecatid'";
+    $resultnoduecat = mysqli_query($con, $sqlnoduecat);
+    if($resultnoduecat)
+    {
+        $rownoduecat = mysqli_fetch_assoc($resultnoduecat);
+        $noduecatname = $rownoduecat['category_Name'];
+    }
+    else
+    {
+        $noduecatname = null;
+    }
+
+}
+else
+{
+    $isnodue = false;
+}
+
+//с краен срок
+$sqldue = "SELECT `task_Task`, `task_Color`, `task_Status`, `task_CategoryID`, DATE_FORMAT(DATE(`task_DueTime`), \"%e/%c/%Y\") AS `task_DueTime` FROM `task` WHERE `task_DueTime` IS NOT NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+$resultdue = mysqli_query($con, $sqldue);
+if($resultdue)
+{
+    $isdue = true;
+
+    $rowdue = mysqli_fetch_assoc($resultdue);
+    $duetask = $rowdue['task_Task'];
+    $duecolor = $rowdue['task_Color'];
+    $duecatid = $rowdue['task_CategoryID'];
+    $duetasktime = $rowdue['task_DueTime'];
+
+    $sqlduecat = "SELECT * FROM `category` WHERE `category_ID`='$duecatid'";
+    $resultduecat = mysqli_query($con, $sqlduecat);
+    if($resultduecat)
+    {
+        $rowduecat = mysqli_fetch_assoc($resultduecat);
+        $duecatname = $rowduecat['category_Name'];
+    }
+    else
+    {
+        $duecatname = null;
+    }
+
+}
+else
+{
+    $isdue = false;
+}
+
+//завършени
+$sqlfin = "SELECT * FROM `task` WHERE `task_Status`='1' ORDER BY `task_ID` DESC LIMIT 1";
+$resultfin = mysqli_query($con, $sqlfin);
+if(mysqli_num_rows($resultfin) > 0)
+{
+    $isfin = true;
+
+    $rowfin = mysqli_fetch_assoc($resultdue);
+    $fintask = $rowfin['task_Task'];
+    $fincolor = $rowfin['task_Color'];
+    $fincatid = $rowfin['task_CategoryID'];
+    $fintasktime = $rowfin['task_DueTime'];
+
+    $sqlfincat = "SELECT * FROM `category` WHERE `category_ID`='$fincatid'";
+    $resultfincat = mysqli_query($con, $sqlfincat);
+    if($resultfincat)
+    {
+        $rowfincat = mysqli_fetch_assoc($resultfincat);
+        $fincatname = $rowfincat['category_Name'];
+    }
+    else
+    {
+        $fincatname = null;
+    }
+    if($fintasktime)
+    {
+        $fintasktime = date_format($fintasktime,"d/m/Y");
+    }
+    else
+    {
+        $fintasktime = null;
+    }
+
+}
+else
+{
+    $isfin = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="bg">
@@ -89,58 +189,81 @@ else
                 <div class="profile-tasks-content d-flex flex-row">
                     <div class="tasks">
                         <div class="tasks-title">
-                            <h6>Незавършени</h6>
+                            <h6>Без краен срок</h6>
                             <button id="addTaskBtn" class="add-task-button"> <i
                                     class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
-                            <div class="task">
-                                <div class="task-inner d-flex flex-row">
-                                    <div class="task-title">
-                                        <span><i class="material-icons">check</i></span>
-                                        <h6>Изхвърли боклука</h6>
-                                    </div>
-                                    <button class="add-task-button-check"><i class="material-icons">check</i></button>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightblue"></span>
-                                    <span class="task-category">Работа</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <!-- <img src="" alt=""> -->
-                                    <p>До <span>06/06/2024</span></p>
-                                    <button class="delete-task-button"><i class="material-icons">delete</i></button>
-                                </div>
-                            </div>
+                            <?php
+                            if($isnodue)
+                            {
+                                echo '<div class="task">';
+                                echo '<div class="task-inner d-flex flex-row">';
+                                echo '<div class="task-title">';
+                                echo '<span><i class="material-icons">check</i></span>';
+                                echo '<h6>'.$noduetask.'</h6>';
+                                echo '</div>';
+                                echo '<button class="add-task-button-check"><i class="material-icons">check</i></button>';
+                                echo '</div>';
+                                echo '<div class="task-color-category">';
+                                echo '<span class="task-color" style="background-color: "'.$noduecolor.'></span>';
+                                echo '<span class="task-category">'.$noduecatname.'</span>';
+                                echo '</div>';
+                                echo '<div class="task-due-date">';
+                                echo '</div>';
+                                //echo '<img src="" alt="">';
+                                echo '<p>Няма краен срок</p>';
+                                echo '<button class="delete-task-button"><i class="material-icons">delete</i></button>';
+                                echo '</div>';
+                                
+                            }
+                            else
+                            {
+                                echo '<div class="task">';
+                                echo '  <h6>*Няма добавени задачи в тази категория</h6>';
+                                echo '</div>';
+                            }
+                            ?>         
                         </div>
                     </div>
                     <div class="tasks">
                         <div class="tasks-title">
-                            <h6>Започнати</h6>
+                            <h6>С краен срок</h6>
                             <button class="add-task-button" onclick="addTaskPopupShow()"> <i
                                     class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
-                            <div class="task">
-                                <div class="task-inner d-flex flex-row">
-                                    <div class="task-title">
-                                        <span><i class="material-icons">local_florist</i></span>
-                                        <h6>Изхвърли боклука</h6>
-                                    </div>
-                                    <button class="add-task-button-check"><i class="material-icons">check</i></button>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: lightblue"></span>
-                                    <span class="task-category">Работа</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <!-- <img src="" alt=""> -->
-                                    <p>До <span>06/06/2024</span></p>
-                                    <button class="delete-task-button"><i class="material-icons">delete</i></button>
-                                </div>
-                            </div>
+                        <?php
+                            if($isdue)
+                            {
+                                echo '<div class="task">';
+                                echo '<div class="task-inner d-flex flex-row">';
+                                echo '<div class="task-title">';
+                                echo '<span><i class="material-icons">local_florist</i></span>';
+                                echo '<h6>'.$duetask.'</h6>';
+                                echo '</div>';
+                                echo '<button class="add-task-button-check"><i class="material-icons">check</i></button>';
+                                echo '</div>';
+                                echo '<div class="task-color-category">';
+                                echo '<span class="task-color" style="background-color: "'.$duecolor.'></span>';
+                                echo '<span class="task-category">'.$duecatname.'</span>';
+                                echo '</div>';
+                                echo '<div class="task-due-date">';
+                                echo '</div>';
+                                //echo '<img src="" alt="">';
+                                echo '<p>До <span>'.$duetasktime.'</span></p>';
+                                echo '<button class="delete-task-button"><i class="material-icons">delete</i></button>';
+                                echo '</div>';
+                                
+                            }
+                            else
+                            {
+                                echo '<div class="task">';
+                                echo '  <h6>*Няма добавени задачи в тази категория</h6>';
+                                echo '</div>';
+                            }
+                        ?>
                         </div>
-
                     </div>
                     <div class="tasks">
                         <div class="tasks-title">
@@ -149,20 +272,43 @@ else
                                     class="material-icons">add</i></button>
                         </div>
                         <div class="tasks-space">
-                            <div class="task">
-                                <div class="task-title">
-                                    <span><i class="material-icons">check</i></span>
-                                    <h6>Изхвърли боклука</h6>
-                                </div>
-                                <div class="task-color-category">
-                                    <span class="task-color" style="background-color: orange"></span>
-                                    <span class="task-category">Училище</span>
-                                </div>
-                                <div class="task-due-date">
-                                    <!-- <img src="" alt=""> -->
-                                    <p>До <span>06/06/2024</span></p>
-                                    <button class="delete-task-button"><i class="material-icons">delete</i></button>
-                                </div>
+                        <?php
+                            if($isfin)
+                            {
+                                echo '<div class="task">';
+                               // echo '<div class="task-inner d-flex flex-row">';
+                                echo '<div class="task-title">';
+                                echo '<span><i class="material-icons">check</i></span>';
+                                echo '<h6>'.$fintask.'</h6>';
+                                echo '</div>';
+                                echo '<button class="add-task-button-check"><i class="material-icons">check</i></button>';
+                                echo '</div>';
+                                echo '<div class="task-color-category">';
+                                echo '<span class="task-color" style="background-color: "'.$fincolor.'></span>';
+                                echo '<span class="task-category">'.$fincatname.'</span>';
+                                echo '</div>';
+                                echo '<div class="task-due-date">';
+                                //echo '</div>';
+                                //echo '<img src="" alt="">';
+                                if($fintasktime)
+                                {
+                                    echo '<p>До <span>'.$fintasktime.'</span></p>';
+                                }
+                                else
+                                {
+                                    echo '<p>Няма краен срок</p>';
+                                }
+                                echo '<button class="delete-task-button"><i class="material-icons">delete</i></button>';
+                                echo '</div>';
+                                
+                            }
+                            else
+                            {
+                                echo '<div class="task">';
+                                echo '  <h6>*Няма добавени задачи в тази категория</h6>';
+                                echo '</div>';
+                            }
+                            ?> 
                             </div>
                         </div>
                     </div>
