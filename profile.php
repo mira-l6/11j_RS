@@ -48,7 +48,9 @@ else
 //взимане на последните задачи 
 
 //без краен срок
-$sqlnodue = "SELECT * FROM `task` WHERE `task_DueTime` IS NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+//$sqlnodue = "SELECT * FROM `task` WHERE `task_DueTime` IS NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+//SELECT `user_task`.`task_ID`, `user_task`.`user_ID`, `task`.`task_Task`, `task`.`task_Color`, `task`.`task_DueTime`, `task`.`task_Status` FROM `user_task` JOIN task ON user_task.task_ID = task.task_ID WHERE user_ID=1;
+$sqlnodue = "SELECT `user_task`.`task_ID`, `user_task`.`user_ID`, `task`.`task_Task`, `task`.`task_Color`, `task`.`task_DueTime`, `task`.`task_Status`, `task`.`task_CategoryID` FROM `user_task` JOIN `task` ON `user_task`.`task_ID` = `task`.`task_ID` WHERE `user_ID`='$userid' AND `task_DueTime` IS NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
 $resultnodue = mysqli_query($con, $sqlnodue);
 if($resultnodue)
 {
