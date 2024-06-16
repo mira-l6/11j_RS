@@ -84,9 +84,11 @@ session_start();
                       echo '  <td>'.$category['category_Name'].'</td>';
                       echo '  <td>'.$task['task_StartTime'].'</td>';
                       echo '  <td>'.$task['task_DueTime'].'</td>';
-                      echo '  <td><button id="delTaskBtn" data-val='.$task['task_ID'].' class="delete-task-button"><i class="material-icons">delete</i></button></td>';
+                      echo '  <td><button id="delTaskBtn" class="delete-task-button"><i class="material-icons">delete</i></button></td>';
                       echo '</tr>';
                     }
+
+                    // onclick="window.location =\'remove-task.php?taskid='.htmlspecialchars($task['task_ID']).'\'"
 
                     // if(isset($_POST[''.$task['task_ID'].''])){
                     //   $sqldelete_task = "DELETE FROM `task` WHERE `task_ID` = ".$_POST[''.$task['task_ID'].''];

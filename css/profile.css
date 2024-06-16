@@ -3,6 +3,16 @@ body{
     /* background-color: red; */
 }
 
+.navbar a:nth-child(6){
+    background-color: rgb(246, 146, 162);
+    color: black;
+    opacity: 0.6;
+    padding: 0.5em;
+}
+.navbar a:nth-child(6):hover{
+    border:  none;
+}
+
 main{
     width: 100vw;
     height: calc(100vh - 73.75px);

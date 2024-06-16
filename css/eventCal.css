@@ -36,6 +36,16 @@ body {
    width: 100vw;
 }
 
+.navbar a:nth-child(3){
+   background-color: rgb(246, 146, 162);
+   color: black;
+   opacity: 0.6;
+   padding: 0.5em;
+}
+.navbar a:nth-child(3):hover{
+   border:  none;
+}
+
 main{
    width: 100vw;
    display: flex;
