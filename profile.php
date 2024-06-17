@@ -59,7 +59,7 @@ if(mysqli_num_rows($resultnodue) > 0)
     $rownodue = mysqli_fetch_assoc($resultnodue);
     $noduetask = $rownodue['task_Task'];
     $noduecolor = $rownodue['task_Color'];
-    if($noduecolor === null)
+    if(!$noduecolor)
     {
         $noduecolor = 'grey';
     }
@@ -101,7 +101,7 @@ if(mysqli_num_rows($resultdue) > 0)
     $rowdue = mysqli_fetch_assoc($resultdue);
     $duetask = $rowdue['task_Task'];
     $duecolor = $rowdue['task_Color'];
-    if($duecolor === null)
+    if(!$duecolor)
     {
         $duecolor = 'grey';
     }
@@ -144,7 +144,7 @@ if(mysqli_num_rows($resultfin) > 0)
     $rowfin = mysqli_fetch_assoc($resultfin);
     $fintask = $rowfin['task_Task'];
     $fincolor = $rowfin['task_Color'];
-    if($fincolor === null)
+    if(!$fincolor)
     {
         $fincolor = 'grey';
     }
