@@ -33,7 +33,7 @@ const months =
 //zadachi po podrazbirane
 let eventsArr =
 [
-    {
+    /*{
         day: 16,
         month: 6,
         year: 2024,
@@ -64,7 +64,7 @@ let eventsArr =
                 time: "10:00 AM"
             },
         ]
-    }
+    }*/
 ]
 
 fetch('fetch-tasks.php')
