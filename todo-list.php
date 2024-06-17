@@ -125,12 +125,12 @@ session_start();
 
         <div class="date">
           <label for="start-date" class="form-control">Начална дата (YYYY-MM-DD)</label>
-          <input id="start-date" name="start-date" type="date" class="form-control" 
+          <input id="start-date" name="start-date" type="string" class="form-control" 
             placeholder="YYYY-mm-dd">
         </div>
         <div class="date">
           <label for="due-date" class="form-control">Краен срок (YYYY-MM-DD)</label>
-          <input id="due-date" name="due-date" type="date" class="form-control" placeholder="YYYY-mm-dd">
+          <input id="due-date" name="due-date" type="string" class="form-control" placeholder="YYYY-mm-dd">
         </div>
 
         <div class="category-area mb-3">
@@ -160,15 +160,15 @@ session_start();
         <div class="color-area">
           <select name="color" id="color" class="form-select p-3">
             <option value="">Цвят</option>
-            <option value="червено">Червено</option>
-            <option value="оранжево">Оранжево</option>
-            <option value="жълто">Жълто</option>
-            <option value="сзелено">Светлозелено</option>
-            <option value="тзелено">Тъмнозелено</option>
-            <option value="свсиньо">Светлосиньо</option>
-            <option value="тсиньо">Тъмносиньо</option>
-            <option value="лилаво">Лилаво</option>
-            <option value="розово">Розово</option>
+            <option value="red">Червено</option>
+            <option value="orange">Оранжево</option>
+            <option value="yellow">Жълто</option>
+            <option value="lightgreen">Светлозелено</option>
+            <option value="darkgreen">Тъмнозелено</option>
+            <option value="lightblue">Светлосиньо</option>
+            <option value="darkblue">Тъмносиньо</option>
+            <option value="purple">Лилаво</option>
+            <option value="pink">Розово</option>
           </select>
         </div>
 
