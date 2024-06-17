@@ -14,14 +14,14 @@
        $resultdelt = mysqli_query($con, $sqldelt);
        if($resultdelt)
        {
-           header("Location: profile.php?Успешно изтрита задача");
+           header("Location: todo-list.php?Успешно изтрита задача");
        }
        else
        {
-           header("Location: profile.php?error=Задачата ne да бъде изтрита");
+           header("Location: todo-list.php?error=Задачата ne да бъде изтрита");
        }
     }
     else
     {
-       header("Location: profile.php?error=Задачата не можа да бъде изтрита");
+       header("Location: todo-list.php?error=Задачата не можа да бъде изтрита");
     }

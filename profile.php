@@ -48,15 +48,21 @@ else
 //взимане на последните задачи 
 
 //без краен срок
-$sqlnodue = "SELECT * FROM `task` WHERE `task_DueTime` IS NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+//$sqlnodue = "SELECT * FROM `task` WHERE `task_DueTime` IS NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+//SELECT `user_task`.`task_ID`, `user_task`.`user_ID`, `task`.`task_Task`, `task`.`task_Color`, `task`.`task_DueTime`, `task`.`task_Status` FROM `user_task` JOIN task ON user_task.task_ID = task.task_ID WHERE user_ID=1;
+$sqlnodue = "SELECT `user_task`.`task_ID`, `user_task`.`user_ID`, `task`.`task_Task`, `task`.`task_Color`, DATE_FORMAT(DATE(`task_DueTime`), \"%e/%c/%Y\"), `task`.`task_Status`, `task`.`task_CategoryID` FROM `user_task` JOIN `task` ON `user_task`.`task_ID` = `task`.`task_ID` WHERE `user_ID`='$userid' AND `task_DueTime` IS NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
 $resultnodue = mysqli_query($con, $sqlnodue);
-if($resultnodue)
+if(mysqli_num_rows($resultnodue) > 0)
 {
     $isnodue = true;
 
     $rownodue = mysqli_fetch_assoc($resultnodue);
     $noduetask = $rownodue['task_Task'];
     $noduecolor = $rownodue['task_Color'];
+    if($noduecolor === null)
+    {
+        $noduecolor = 'grey';
+    }
     $noduecatid = $rownodue['task_CategoryID'];
     $noduetaskid = $rownodue['task_ID'];
 
@@ -64,9 +70,12 @@ if($resultnodue)
     $resultnoduecat = mysqli_query($con, $sqlnoduecat);
     if($resultnoduecat)
     {
-        if($rownoduecat = mysqli_fetch_assoc($resultnoduecat)){
+        if($rownoduecat = mysqli_fetch_assoc($resultnoduecat))
+        {
             $noduecatname = $rownoduecat['category_Name'];
-        }else{
+        }
+        else
+        {
             $noduecatname = null;
         }
     }
@@ -82,31 +91,42 @@ else
 }
 
 //с краен срок
-$sqldue = "SELECT `task_ID`, `task_Task`, `task_Color`, `task_Status`, `task_CategoryID`, DATE_FORMAT(DATE(`task_DueTime`), \"%e/%c/%Y\") AS `task_DueTime` FROM `task` WHERE `task_DueTime` IS NOT NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+//$sqldue = "SELECT `task_ID`, `task_Task`, `task_Color`, `task_Status`, `task_CategoryID`, DATE_FORMAT(DATE(`task_DueTime`), \"%e/%c/%Y\") AS `task_DueTime` FROM `task` WHERE `task_DueTime` IS NOT NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
+$sqldue = "SELECT `user_task`.`task_ID`, `user_task`.`user_ID`, `task`.`task_Task`, `task`.`task_Color`, DATE_FORMAT(DATE(`task`.`task_DueTime`), \"%e/%c/%Y\") AS `task_DueTime`, `task`.`task_Status`, `task`.`task_CategoryID` FROM `user_task` JOIN `task` ON `user_task`.`task_ID` = `task`.`task_ID` WHERE `user_ID`='$userid' AND `task_DueTime` IS NOT NULL AND `task_Status`='0' ORDER BY `task_ID` DESC LIMIT 1";
 $resultdue = mysqli_query($con, $sqldue);
-if($resultdue)
+if(mysqli_num_rows($resultdue) > 0)
 {
     $isdue = true;
 
     $rowdue = mysqli_fetch_assoc($resultdue);
     $duetask = $rowdue['task_Task'];
     $duecolor = $rowdue['task_Color'];
+    if($duecolor === null)
+    {
+        $duecolor = 'grey';
+    }
     $duecatid = $rowdue['task_CategoryID'];
     $duetasktime = $rowdue['task_DueTime'];
     $duetaskid = $rowdue['task_ID'];
 
-    $sqlduecat = "SELECT * FROM `category` WHERE `category_ID`='$duecatid'";
-    $resultduecat = mysqli_query($con, $sqlduecat);
-    if($resultduecat)
+    if($duecatid)
     {
-        $rowduecat = mysqli_fetch_assoc($resultduecat);
-        $duecatname = $rowduecat['category_Name'];
+        $sqlduecat = "SELECT * FROM `category` WHERE `category_ID`='$duecatid'";
+        $resultduecat = mysqli_query($con, $sqlduecat);
+        if($resultduecat)
+        {
+            $rowduecat = mysqli_fetch_assoc($resultduecat);
+            $duecatname = $rowduecat['category_Name'];
+        }
+        else
+        {
+            echo "greshka";
+        }
     }
     else
     {
-        $duecatname = null;
+        $duecatname = "Без категория";
     }
-
 }
 else
 {
@@ -114,17 +134,27 @@ else
 }
 
 //завършени
-$sqlfin = "SELECT * FROM `task` WHERE `task_Status`='1' ORDER BY `task_ID` DESC LIMIT 1";
+//$sqlfin = "SELECT * FROM `task` WHERE `task_Status`='1' ORDER BY `task_ID` DESC LIMIT 1";
+$sqlfin = "SELECT `user_task`.`task_ID`, `user_task`.`user_ID`, `task`.`task_Task`, `task`.`task_Color`, DATE_FORMAT(DATE(`task`.`task_DueTime`), \"%e/%c/%Y\") AS `task_DueTime`, `task`.`task_Status`, `task`.`task_CategoryID` FROM `user_task` JOIN `task` ON `user_task`.`task_ID` = `task`.`task_ID` WHERE `user_ID`='$userid' AND `task_Status`='1' ORDER BY `task_ID` DESC LIMIT 1";
 $resultfin = mysqli_query($con, $sqlfin);
 if(mysqli_num_rows($resultfin) > 0)
 {
     $isfin = true;
 
-    $rowfin = mysqli_fetch_assoc($resultdue);
+    $rowfin = mysqli_fetch_assoc($resultfin);
     $fintask = $rowfin['task_Task'];
     $fincolor = $rowfin['task_Color'];
+    if($fincolor === null)
+    {
+        $fincolor = 'grey';
+    }
     $fincatid = $rowfin['task_CategoryID'];
+
     $fintasktime = $rowfin['task_DueTime'];
+    if(!$fintasktime)
+    {
+        $fintasktime = 'Без краен срок';
+    }
     $fintaskid = $rowfin['task_ID'];
 
     $sqlfincat = "SELECT * FROM `category` WHERE `category_ID`='$fincatid'";
@@ -138,15 +168,6 @@ if(mysqli_num_rows($resultfin) > 0)
     {
         $fincatname = null;
     }
-    if($fintasktime)
-    {
-        $fintasktime = date_format($fintasktime,"d/m/Y");
-    }
-    else
-    {
-        $fintasktime = null;
-    }
-
 }
 else
 {
@@ -212,10 +233,13 @@ else
                                 echo '      <button class="add-task-button-check"><i class="material-icons">check</i></button>';
                                 echo '  </div>';
                                 echo '  <div class="task-color-category">';
-                                echo '      <span class="task-color" style="background-color: "'.$noduecolor.'></span>';
-                                if($noduecatname == null){
+                                echo '      <span class="task-color" style="background-color: '.$noduecolor.'"></span>';
+                                if($noduecatname === null)
+                                {
                                     echo '  <span class="task-category">Без категория</span>';
-                                }else{
+                                }
+                                else
+                                {
                                     echo '  <span class="task-category">'.$noduecatname.'</span>';
                                 }
                                 echo '  </div>';
@@ -255,7 +279,7 @@ else
                                 echo '      <button class="add-task-button-check"><i class="material-icons">check</i></button>';
                                 echo '  </div>';
                                 echo '  <div class="task-color-category">';
-                                echo '      <span class="task-color" style="background-color: "'.$duecolor.'></span>';
+                                echo '      <span class="task-color" style="background-color: '.$duecolor.'"></span>';
                                 echo '      <span class="task-category">'.$duecatname.'</span>';
                                 echo '  </div>';
                                 echo '  <div class="task-due-date">';
@@ -294,19 +318,19 @@ else
                                 echo '      <button class="add-task-button-check"><i class="material-icons">check</i></button>';
                                 echo '  </div>';
                                 echo '  <div class="task-color-category">';
-                                echo '      <span class="task-color" style="background-color: "'.$fincolor.'></span>';
+                                echo '      <span class="task-color" style="background-color: '.$fincolor.'"></span>';
                                 echo '      <span class="task-category">'.$fincatname.'</span>';
                                 echo '  </div>';
                                 echo '  <div class="task-due-date">';
                                 //echo '</div>';
                                 //echo '<img src="" alt="">';
-                                if($fintasktime)
+                                if(!$fintasktime)
                                 {
-                                    echo '  <p>До <span>'.$fintasktime.'</span></p>';
+                                    echo '  <p>Няма краен срок</p>';
                                 }
                                 else
                                 {
-                                    echo '  <p>Няма краен срок</p>';
+                                    echo '  <p>До <span>'.$fintasktime.'</span></p>';
                                 }
                                 echo '      <button class="delete-task-button" onclick="window.location =\'remove-cat.php?id='.htmlspecialchars($fintaskid).'\'"><i class="material-icons">delete</i></button>';
                                 echo '  </div>';

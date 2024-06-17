@@ -84,7 +84,7 @@ session_start();
                       echo '  <td>'.$category['category_Name'].'</td>';
                       echo '  <td>'.$task['task_StartTime'].'</td>';
                       echo '  <td>'.$task['task_DueTime'].'</td>';
-                      echo '  <td><button id="delTaskBtn" class="delete-task-button"><i class="material-icons">delete</i></button></td>';
+                      echo '  <td><button id="delTaskBtn" class="delete-task-button" onclick="window.location =\'remove-task-todo.php?taskid='.htmlspecialchars($task['task_ID']).'\'"><i class="material-icons">delete</i></button></td>';
                       echo '</tr>';
                     }
 

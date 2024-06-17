@@ -2,43 +2,53 @@
    session_start();
    include "db_connection.php"; 
 
-   if(isset($_POST['task'])){
-
+   if(isset($_POST['task']))
+   {
         $task = trim($_POST['task']);
 
-        if(isset($_POST['description'])){
+        if(isset($_POST['description']))
+        {
             $description = trim($_POST['description']);
         }
-        else{
+        else
+        {
             $description = null;
         }
 
-        if(isset($_POST['category'])){
+        if(isset($_POST['category']))
+        {
             $category = trim($_POST['category']);
 
         }
-        else{
+        else
+        {
             $category = null;
         }
 
-        if(isset($_POST['start-date'])){
+        if(isset($_POST['start-date']))
+        {
             $start_date = trim($_POST['start-date']);
         }
-        else{
+        else
+        {
             $start_date = null;
         }
 
-        if(isset($_POST['due-date'])){
-            $due_date = trim($_POST['due-date']);
+        if(isset($_POST['due-date']))
+        {
+            $due_date = trim($_POST['due-date'])." 00:00:00";
         }
-        else{
+        else
+        {
             $due_date = null;
         }
 
-        if(isset($_POST['color'])){
+        if(isset($_POST['color']))
+        {
             $color = trim($_POST['color']);
         }
-        else{
+        else
+        {
             $color = null;
         }
 
@@ -48,7 +58,7 @@
         //     $resultnewtask = mysqli_query($con, $sqlnewtask);
         // }else{
             $sqlnewtask = "INSERT INTO `task`(`task_Task`, `task_Description`, `task_Color`, `task_StartTime`, `task_DueTime`, `task_Status`, `task_CategoryID`)
-            VALUES ('$task', '$description', '$color', '$start_date  00:00:00', '$due_date  00:00:00', '0', '$category')";
+            VALUES ('$task', '$description', '$color', '$start_date  00:00:00', '$due_date', '0', '$category')";
             $resultnewtask = mysqli_query($con, $sqlnewtask);
         // }
 
