@@ -31,7 +31,7 @@ const months =
 ];
 
 //zadachi po podrazbirane
-const eventsArr =
+let eventsArr =
 [
     {
         day: 16,
@@ -66,25 +66,28 @@ const eventsArr =
         ]
     }
 ]
-console.log(events);
-initCalendar();
-//let eventsArr = [];
 
 fetch('fetch-tasks.php')
         .then(response => response.json())
-        .then(data => {
-            for (let i = 0; i < data.length; i++) {
-                const eventDate = new Date(data[i].task_DueDate);
-                eventsArr.push({
+        .then(data => 
+        {
+            for (let i = 0; i < data.length; i++) 
+            {
+                const eventDate = new Date(data[i].ttime);
+                eventsArr.push(
+                {
                     day: eventDate.getDate(),
                     month: eventDate.getMonth() + 1,
                     year: eventDate.getFullYear(),
                     title: data[i].task_Task
                 });
             }
-            initCalendar(eventsArr);
         })
         .catch(error => console.error('Error fetching events:', error));
+
+//let eventsArr = [];
+
+
 /*let fetchedTasks = [
     { task_Task: "Task 1", task_DueDate: "2024-06-13" },
     { task_Task: "Task 2", task_DueDate: "2024-06-14" },

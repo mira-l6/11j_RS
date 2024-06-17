@@ -3,18 +3,19 @@
 header('Content-Type: application/json');
 include 'db_connection.php';
 
-$sql = "SELECT `task_Task`, `task_DueTime` FROM `task`";
+$sql = "SELECT `task_Task` AS `title`, `task_DueTime` AS `ttime` FROM `task`";
 $result = mysqli_query($con, $sql);
 
-$tasks = array();
-if(mysqli_num_rows($result) > 0){
+$eventsArr = array();
+if(mysqli_num_rows($result) > 0)
+{
     while($row = mysqli_fetch_assoc($result))
     {
-        $tasks[] = $row;
+        $eventsArr[] = $row;
     }
 }
 
 
-$con->close();
+//$con->close();
 
-echo json_encode($tasks);
+echo json_encode($eventsArr);
