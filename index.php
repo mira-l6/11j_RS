@@ -18,6 +18,8 @@
             echo '      display: none }';
             echo '  .navbar a:nth-child(5){';
             echo '      display: none }';
+            echo '  .navbar a:nth-child(6){';
+            echo '      display: none }';
             echo '</style';
         }
     ?>
