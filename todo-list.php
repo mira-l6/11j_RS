@@ -125,12 +125,12 @@ session_start();
 
         <div class="date">
           <label for="start-date" class="form-control">Начална дата (YYYY-MM-DD)</label>
-          <input id="start-date" name="start-date" type="string" class="form-control" 
+          <input id="start-date" name="start-date" type="date" class="form-control" 
             placeholder="YYYY-mm-dd">
         </div>
         <div class="date">
           <label for="due-date" class="form-control">Краен срок (YYYY-MM-DD)</label>
-          <input id="due-date" name="due-date" type="string" class="form-control" placeholder="YYYY-mm-dd">
+          <input id="due-date" name="due-date" type="date" class="form-control" placeholder="YYYY-mm-dd">
         </div>
 
         <div class="category-area mb-3">
