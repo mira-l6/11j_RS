@@ -33,38 +33,38 @@ const months =
 //zadachi po podrazbirane
 let eventsArr =
 [
-    {
-        day: 16,
-        month: 6,
-        year: 2024,
-        events:
-        [
-            {
-                title: "Изхвърли боклука",
-                time: "10:00 AM"
-            },
-            {
-                title: "Напиши си домашната",
-                time: "10:00 AM"
-            },
-        ]
-    },
-    {
-        day: 22,
-        month: 6,
-        year: 2024,
-        events:
-        [
-            {
-                title: "Изхвърли боклука 2",
-                time: "10:00 AM"
-            },
-            {
-                title: "Напиши си домашната we",
-                time: "10:00 AM"
-            },
-        ]
-    }
+    // {
+    //     day: 16,
+    //     month: 6,
+    //     year: 2024,
+    //     events:
+    //     [
+    //         {
+    //             title: "Изхвърли боклука",
+    //             time: "10:00 AM"
+    //         },
+    //         {
+    //             title: "Напиши си домашната",
+    //             time: "10:00 AM"
+    //         },
+    //     ]
+    // },
+    // {
+    //     day: 22,
+    //     month: 6,
+    //     year: 2024,
+    //     events:
+    //     [
+    //         {
+    //             title: "Изхвърли боклука 2",
+    //             time: "10:00 AM"
+    //         },
+    //         {
+    //             title: "Напиши си домашната we",
+    //             time: "10:00 AM"
+    //         },
+    //     ]
+    // }
 ]
 
 fetch('fetch-tasks.php')
