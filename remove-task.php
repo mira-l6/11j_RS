@@ -6,7 +6,7 @@
     $toberemovedid = $_GET['taskid'];
 
     $sqlremovet = "DELETE FROM `user_task` WHERE `task_ID`= ".$toberemovedid;
-    echo $sqlremovet;
+    // echo $sqlremovet;
     $resultremovet = mysqli_query($con, $sqlremovet);
     if($resultremovet)
     {
