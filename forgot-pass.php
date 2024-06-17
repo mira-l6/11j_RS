@@ -7,6 +7,22 @@ include "main_background.php";
 <html lang="en">
 
 <head>
+    <?php
+        if(!isset($_SESSION['login_UserID'])){
+            echo '<style>';
+            echo '  .navbar a:nth-child(2){';
+            echo '      display: none }';
+            echo '  .navbar a:nth-child(3){';
+            echo '      display: none }';
+            echo '  .navbar a:nth-child(4){';
+            echo '      display: none }';
+            echo '  .navbar a:nth-child(5){';
+            echo '      display: none }';
+            echo '  .navbar a:nth-child(6){';
+            echo '      display: none }';
+            echo '</style';
+        }
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

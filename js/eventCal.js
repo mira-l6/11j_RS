@@ -79,7 +79,11 @@ fetch('fetch-tasks.php')
                     day: eventDate.getDate(),
                     month: eventDate.getMonth() + 1,
                     year: eventDate.getFullYear(),
-                    title: data[i].task_Task
+                    events: [{
+                        title: data[i].title,
+                        time: data[i].ttime 
+                    }]        
+                    
                 });
             }
         })
@@ -275,7 +279,7 @@ dateInput.addEventListener("input", (e) =>
     }
 });
 
-gotoBtn.addEventListener("click", gotoDate);
+// gotoBtn.addEventListener("click", gotoDate);
 
 //da otidesh na izbranata data
 function gotoDate()
@@ -379,6 +383,7 @@ function showEvents(date)
     let events = "";
     eventsArr.forEach((event) =>
     {
+        console.log(event.events);
         //vzimane na zadachite samo ot aktivniq den
         if(date === event.day && month + 1 === event.month && year === event.year)
         {
