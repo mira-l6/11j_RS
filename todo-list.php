@@ -67,21 +67,36 @@ session_start();
                   $usertask = $usertasks[$i];
                   $usertask_ID = $usertask["task_ID"];
                   
-                  $sqlget_currenttask = "SELECT * FROM `task` WHERE `task_ID` = $usertask_ID";
-                  $result_currenttask = mysqli_query($con,$sqlget_currenttask);
-                  if($result_currenttask){
+                  $sqlget_currenttask = "SELECT * FROM `task` WHERE `task_ID` = '$usertask_ID'";
+                  $result_currenttask = mysqli_query($con, $sqlget_currenttask);
+                  if($result_currenttask)
+                  {
                     $task = mysqli_fetch_assoc($result_currenttask);
-                    $sqlgetcategory = "SELECT `category_Name` FROM `category` WHERE `category_ID` = ". $task['task_CategoryID'];
-                    $result_category = mysqli_query($con,$sqlgetcategory);
-                    if($result_category){
-                      $category = mysqli_fetch_assoc($result_category);
-                    }
+                    if($task['task_CategoryID'])
+                    {                      
+                      $sqlgetcategory = "SELECT `category_Name` FROM `category` WHERE `category_ID` = ". $task['task_CategoryID'];
+                      $result_category = mysqli_query($con, $sqlgetcategory);
+                      if($result_category)
+                      {
+                        $categoryrow = mysqli_fetch_assoc($result_category);
+                        $category = $categoryrow['category_Name'];
+                      }
+                      else
+                      {
+                        $category = 'Без категория';
+                      }
+                      }
+                      else
+                      {
+                        $category = 'Без категория';
+                      }    
 
-                    if($task['task_Status'] == 0){
+                      if($task['task_Status'] == 0)
+                      {
                       echo '<tr id="'.$task['task_ID'].'">';
                       echo '  <td>'.$task['task_Task'].'</td>';
                       echo '  <td>'.$task['task_Description'].'</td>';
-                      echo '  <td>'.$category['category_Name'].'</td>';
+                      echo '  <td>'.$category.'</td>';
                       echo '  <td>'.$task['task_StartTime'].'</td>';
                       echo '  <td>'.$task['task_DueTime'].'</td>';
                       echo '  <td><button id="delTaskBtn" class="delete-task-button" onclick="window.location =\'remove-task-todo.php?taskid='.htmlspecialchars($task['task_ID']).'\'"><i class="material-icons">delete</i></button></td>';
@@ -103,7 +118,9 @@ session_start();
                 }
               }
 
-            }else{
+            }
+            else
+            {
               header("Location: todo-list.php?ne iska da stane");
             }
           ?>
