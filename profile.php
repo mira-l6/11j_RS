@@ -59,7 +59,7 @@ if(mysqli_num_rows($resultnodue) > 0)
     $rownodue = mysqli_fetch_assoc($resultnodue);
     $noduetask = $rownodue['task_Task'];
     $noduecolor = $rownodue['task_Color'];
-    if($noduecolor === null)
+    if(!$noduecolor)
     {
         $noduecolor = 'grey';
     }
@@ -101,7 +101,7 @@ if(mysqli_num_rows($resultdue) > 0)
     $rowdue = mysqli_fetch_assoc($resultdue);
     $duetask = $rowdue['task_Task'];
     $duecolor = $rowdue['task_Color'];
-    if($duecolor === null)
+    if(!$duecolor)
     {
         $duecolor = 'grey';
     }
@@ -144,7 +144,7 @@ if(mysqli_num_rows($resultfin) > 0)
     $rowfin = mysqli_fetch_assoc($resultfin);
     $fintask = $rowfin['task_Task'];
     $fincolor = $rowfin['task_Color'];
-    if($fincolor === null)
+    if(!$fincolor)
     {
         $fincolor = 'grey';
     }
@@ -382,9 +382,27 @@ else
             <div class="category-area mb-3">
                 <select name="category" id="category" class="form-select p-3">
                     <option value="">Категория</option>
-                    <!-- php for cycle za opcii -->
-                </select>
-            </div>
+                    <?php
+            $sqlcat = "SELECT * FROM `category`";
+            $resultcat = mysqli_query($con, $sqlcat);
+            $catcount = mysqli_num_rows($resultcat);
+            $cats = array();
+
+            while ($rowcat = mysqli_fetch_assoc($resultcat)) {
+              $cats[] = $rowcat;
+            }
+            $_SESSION['cats'] = $cats;
+
+            for ($j = 0; $j < $catcount; $j++) {
+              $cat = $cats[$j];
+              $categoryname = $cat['category_Name'];
+              $categoryid = $cat['category_ID'];
+              echo '<option value="'.$categoryid.'">' . $categoryname . '</option>';
+            }
+            ?>
+          </select>
+        </div>
+                
 
             <div class="d-flex flex-row dates mb-3">
                 <div class="w-50 date">
@@ -414,6 +432,7 @@ else
 
             <div class="popup-buttons w-100 d-flex justify-content-around mt-3">
                 <button id="closePopupBtn" onclick="addTaskPopupClose()">Изход</button>
+                <!--<button id="closePopupBtn" onclick="window.location ='profile.php'">Изход</button>-->
                 <input type="submit" value="Добавяне">
             </div>
 

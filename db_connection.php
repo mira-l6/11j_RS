@@ -1,18 +1,8 @@
 <?php
-    // $dbServername = "localhost";
-    // $dbUserName = "root";
-    // $dbPassword = "lutenica123";
-    // $dbName = "todotasksDB";
-
-    // $conn = mysqli_connect($dbServername, $dbUserName, $dbPassword, $dbName);
-
-    // if(!$conn){
-    //     //dopishi
-    // }
     $host="localhost";
     $port=3306;
     $user="root";
-    $password="lutenica123"; 
+    $password=""; 
     $dbname="tododb";
 
     $con = new mysqli($host, $user, $password, $dbname, $port)
