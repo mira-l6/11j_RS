@@ -161,13 +161,15 @@ if(mysqli_num_rows($resultfin) > 0)
     $resultfincat = mysqli_query($con, $sqlfincat);
     if($resultfincat)
     {
-        $rowfincat = mysqli_fetch_assoc($resultfincat);
-        $fincatname = $rowfincat['category_Name'];
+        if($rowfincat = mysqli_fetch_assoc($resultfincat)){
+            $fincatname = $rowfincat['category_Name'];
+        }
+        else
+        {
+            $fincatname = 'Без категория';
+        }
     }
-    else
-    {
-        $fincatname = null;
-    }
+    
 }
 else
 {
@@ -230,7 +232,7 @@ else
                                 echo '          <span><i class="material-icons">check</i></span>';
                                 echo '          <h6>'.$noduetask.'</h6>';
                                 echo '      </div>';
-                                echo '      <button class="add-task-button-check"><i class="material-icons">check</i></button>';
+                                echo '      <button class="add-task-button-check" onclick="window.location =\'mark-task-asdone.php?taskid='.htmlspecialchars($noduetaskid).'\'" ><i class="material-icons">check</i></button>';
                                 echo '  </div>';
                                 echo '  <div class="task-color-category">';
                                 echo '      <span class="task-color" style="background-color: '.$noduecolor.'"></span>';
@@ -276,7 +278,7 @@ else
                                 echo '          <span><i class="material-icons">local_florist</i></span>';
                                 echo '          <h6>'.$duetask.'</h6>';
                                 echo '      </div>';
-                                echo '      <button class="add-task-button-check"><i class="material-icons">check</i></button>';
+                                echo '      <button class="add-task-button-check" onclick="window.location =\'mark-task-asdone.php?taskid='.htmlspecialchars($duetaskid).'\'" ><i class="material-icons">check</i></button>';
                                 echo '  </div>';
                                 echo '  <div class="task-color-category">';
                                 echo '      <span class="task-color" style="background-color: '.$duecolor.'"></span>';
@@ -315,7 +317,7 @@ else
                                 echo '          <span><i class="material-icons">check</i></span>';
                                 echo '          <h6>'.$fintask.'</h6>';
                                 echo '      </div>';
-                                echo '      <button class="add-task-button-check"><i class="material-icons">check</i></button>';
+                                // echo '      <button class="add-task-button-check"><i class="material-icons">check</i></button>';
                                 echo '  </div>';
                                 echo '  <div class="task-color-category">';
                                 echo '      <span class="task-color" style="background-color: '.$fincolor.'"></span>';
@@ -332,7 +334,7 @@ else
                                 {
                                     echo '  <p>До <span>'.$fintasktime.'</span></p>';
                                 }
-                                echo '      <button class="delete-task-button" onclick="window.location =\'remove-cat.php?id='.htmlspecialchars($fintaskid).'\'"><i class="material-icons">delete</i></button>';
+                                echo '      <button class="delete-task-button" onclick="window.location =\'remove-task.php?taskid='.htmlspecialchars($fintaskid).'\'"><i class="material-icons">delete</i></button>';
                                 echo '  </div>';
                                 echo '</div>';
                                 

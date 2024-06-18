@@ -92,7 +92,7 @@ include "menu.php";
 
         <div class="events">
           <div class="event">
-            <div class="title"> 
+            <div class="title">
               <i class="fas fa-circle"></i>
               <h3 class="event-title">Задача 1</h3>
             </div>
@@ -106,6 +106,9 @@ include "menu.php";
 
   <div class="main-img"></div>
   <script src="js/eventCal.js"></script>
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", fetchDBInfo());
+  </script> -->
 </body>
 
 </html>

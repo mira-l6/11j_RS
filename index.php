@@ -21,6 +21,9 @@
             echo '  .navbar a:nth-child(6){';
             echo '      display: none }';
             echo '</style';
+        }else{
+            echo '<style>';
+            echo '';
         }
     ?>
     

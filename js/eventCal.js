@@ -2,12 +2,12 @@ const calendar = document.querySelector(".calendar"),
     date = document.querySelector(".date"),
     daysContainer = document.querySelector(".days"),
     prev = document.querySelector(".prev"),
-next = document.querySelector(".next"),
-todayBtn = document.querySelector(".today-btn"),
-dateInput = document.querySelector(".date-input"),
+    next = document.querySelector(".next"),
+    todayBtn = document.querySelector(".today-btn"),
+    dateInput = document.querySelector(".date-input"),
     eventDay = document.querySelector(".event-day"),
- eventDate = document.querySelector(".event-date"),
- eventsContainer = document.querySelector(".events");
+    eventDate = document.querySelector(".event-date"),
+    eventsContainer = document.querySelector(".events");
 
 let today = new Date();
 let activeDay;
@@ -67,7 +67,9 @@ let eventsArr =
     // }
 ]
 
-fetch('fetch-tasks.php')
+async function fetchDBInfo(){
+
+    await fetch('fetch-tasks.php')
         .then(response => response.json())
         .then(data => 
         {
@@ -88,6 +90,8 @@ fetch('fetch-tasks.php')
             }
         })
         .catch(error => console.error('Error fetching events:', error));
+    }
+
 
 //let eventsArr = [];
 
@@ -417,3 +421,5 @@ function showEvents(date)
     console.log(events);
     eventsContainer.innerHTML = events;
 }
+
+fetchDBInfo();
