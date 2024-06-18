@@ -2,7 +2,6 @@
     session_start();
     include "db_connection.php";
 
-
     $toberemovedid = $_GET['taskid'];
 
     $sqlremovet = "DELETE FROM `user_task` WHERE `task_ID`= ".$toberemovedid;
